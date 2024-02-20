@@ -33,8 +33,12 @@ button:hover {
 }
 
 .banner-carousel {
-    height: 175px;
+    height: fit-content;
     background-color: white; /* Just to show it for now before we add images */
+}
+
+.banner-carousel div div {
+    padding: 0px;
 }
 
 .carousel {
