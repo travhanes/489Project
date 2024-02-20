@@ -1,0 +1,33 @@
+button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: tomato;
+}
+
+.menu {
+    padding: 20px;
+}
+
+.menu div {
+    padding: 10px;
+}
+
+.menu div button {
+    width: 100%;
+}
+
+.hfit {
+    height: fit-content;
+}
+
+.wfit {
+    width: fit-content;
+}
