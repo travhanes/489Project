@@ -31,3 +31,30 @@ button:hover {
 .wfit {
     width: fit-content;
 }
+
+.banner-carousel {
+    height: 175px;
+    background-color: white; /* Just to show it for now before we add images */
+}
+
+.carousel {
+    background-color: white;
+    height: 300px;
+}
+
+.carousel-title {
+    background-color: #363636;
+    height: 40px;
+}
+
+.carousel-title span {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.carousel-content {
+    background-color: #1f1f1f;
+    height: 260px;
+}
