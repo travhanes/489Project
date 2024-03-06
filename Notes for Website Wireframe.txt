@@ -1,0 +1,5 @@
+Notes for Website Wireframe
+
+homepage
+-> modal view for each of the different filter-buttons
+
