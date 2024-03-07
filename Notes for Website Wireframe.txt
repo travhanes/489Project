@@ -1,5 +1,25 @@
 Notes for Website Wireframe
 
-homepage
+PAGES:
+browsing 
 -> modal view for each of the different filter-buttons
+-> modal view for sign up
 
+promotions 
+product
+
+cart
+checkout
+
+account
+-> settings
+
+wishlist
+orders
+newsletters
+library
+
+join
+publisher page
+
+articles
