@@ -83,226 +83,255 @@
 
       <!-- Content -->
       <div class="col-9 scrollable-column p-5" style="background-color: aqua;">
-        <!-- Name, Email, Delivery Address -->
-        <div class="row">
-          <div class="card m-2">
-            <div class="card-body">
-              <h5 class="card-title">Contact Information</h5>
-              <form>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="First name">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name">
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Email">
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Address">
-                  </div>
-                </div>
-                <button class="btn btn-primary">Submit</button>
-              </form>
-            </div>
+        <!-- Search Bar -->
+        <div class="hfit" style="width: 100%;">
+          <div class="row row-cols-4" style="padding: 5px;">
+            <div style="width: 80%;"><input class="search-bar w-100 h-100" placeholder="Search..."></div>
+            <div class="wfit"><button>Search</button></div>
           </div>
         </div>
-        <!-- Password -->
-        <div class="row">
-          <div class="card m-2">
-            <div class="card-body">
-              <h5 class="card-title">Change your password</h5>
-              <form>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Old Password">
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="New Password">
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Retype new password">
-                  </div>
-                </div>
-                <button class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
+
+        <!-- Filters -->
+        <div class="row menu">
+          <div class="col"><button>Publishers</button></div>
+          <div class="col"><button>Genre</button></div>
+          <div class="col"><button>Product Type</button></div>
+          <div class="col"><button>Rule System</button></div>
+          <div class="col"><button>Languages</button></div>
+          <div class="col"><button>Format</button></div>
         </div>
-        <!-- Payment Methods -->
+
+        <!-- Order Items and Page Navigation -->
         <div class="row">
-          <div class="card m-2">
-            <div class="card-body">
-              <h5 class="card-title">Payment Methods</h5>
-              <form action="">
-                <p class="fw-bold mb-4 pb-2">Saved cards:</p>
-    
-                <div class="d-flex flex-row align-items-center mb-4 pb-1">
-                  <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
-                  <div class="flex-fill mx-3">
-                    <div class="form-outline">
-                      <input type="text" id="formControlLgXc" class="form-control form-control-lg"
-                        value="**** **** **** 3193" />
-                      <label class="form-label" for="formControlLgXc">Card Number</label>
-                    </div>
-                  </div>
-                  <a href="#!">Remove card</a>
-                </div>
-    
-                <div class="d-flex flex-row align-items-center mb-4 pb-1">
-                  <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />
-                  <div class="flex-fill mx-3">
-                    <div class="form-outline">
-                      <input type="text" id="formControlLgXs" class="form-control form-control-lg"
-                        value="**** **** **** 4296" />
-                      <label class="form-label" for="formControlLgXs">Card Number</label>
-                    </div>
-                  </div>
-                  <a href="#!">Remove card</a>
-                </div>
-    
-                <p class="fw-bold mb-4">Add new card:</p>
-    
-                <div class="form-outline mb-4">
-                  <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
-                    value="Anna Doe" />
-                  <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
-                </div>
-    
-                <div class="row mb-4">
-                  <div class="col-7">
-                    <div class="form-outline">
-                      <input type="text" id="formControlLgXM" class="form-control form-control-lg"
-                        value="1234 5678 1234 5678" />
-                      <label class="form-label" for="formControlLgXM">Card Number</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-outline">
-                      <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
-                        placeholder="MM/YYYY" />
-                      <label class="form-label" for="formControlLgExpk">Expire</label>
-                    </div>
-                  </div>
-                  <div class="col-2">
-                    <div class="form-outline">
-                      <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
-                        placeholder="Cvv" />
-                      <label class="form-label" for="formControlLgcvv">Cvv</label>
-                    </div>
-                  </div>
-                </div>
-    
-                <button class="btn btn-success btn-lg btn-block">Add card</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- Notification Preferences -->
           <div class="col">
-            <div class="card m-2" style="height: 100%;">
-              <div class="card-body">
-                <h5 class="card-title">Notification Preferences</h5>
-                <form>
-                  <ul class="list-group" style="font-size: larger;">
-                    <li class="list-group-item my-3">
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption1" value="option1">
-                        <label class="form-check-label" for="notificationOption1">
-                          Daily Updates
-                        </label>
-                      </div>
-                    </li>
-                    <li class="list-group-item my-3">
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption2" value="option2">
-                        <label class="form-check-label" for="notificationOption2">
-                          Weekly Digest
-                        </label>
-                      </div>
-                    </li>
-                    <li class="list-group-item my-3">
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption3" value="option3">
-                        <label class="form-check-label" for="notificationOption3">
-                          Monthly Summary
-                        </label>
-                      </div>
-                    </li>
-                  </ul>
-                </form>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Order Items
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </div>
           </div>
           <div class="col">
-            <!-- Website Preferences -->
-            <div class="row">
-              <div class="card m-2">
-                <div class="card-body">
-                  <h5 class="card-title">Website Preferences</h5>
-                  <form>
-                    <ul class="list-group" style="font-size: larger;">
-                      <li class="list-group-item my-3">
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption1" value="option1">
-                          <label class="form-check-label" for="notificationOption1">
-                            Adult Content
-                          </label>
-                        </div>
-                      </li>
-                      <li class="list-group-item my-3">
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption2" value="option2">
-                          <label class="form-check-label" for="notificationOption2">
-                            Dark View
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
-                  </form>
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+
+        <!-- Items in Library -->
+        <!-- Item 1 -->
+        <div class="row">
+          <div class="card m-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <div style="height: 190px; width: 140px; background-color: red;"></div>
+                </div>
+                <div class="col-sm-10 my-auto">
+                  <div class="row">
+                    <div class="col-4">
+                      <h4>Product Name</h4>
+                      <h6>Publisher Name</h6>
+                    </div>
+                    <div class="col-6">
+                      <p>Purchase Date: 1/1/01</p>
+                      <p>Download Date: 1/1/01</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-primary">Show/Hide</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- Publisher-relevant options -->
-            <div class="row">
-              <div class="card m-2">
-                <div class="card-body">
-                  <h5 class="card-title">Publisher Options</h5>
-                  <form>
-                    <ul class="list-group" style="font-size: larger;">
-                      <li class="list-group-item my-3">
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption1" value="option1">
-                          <label class="form-check-label" for="notificationOption1">
-                            Receive Customer Mail
-                          </label>
-                        </div>
-                      </li>
-                      <li class="list-group-item my-3">
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" name="notificationPreference" id="notificationOption2" value="option2">
-                          <label class="form-check-label" for="notificationOption2">
-                            Notified About Sale
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
-                  </form>
+              <div class="row">
+                <div class="card m2">
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Item 2 -->
+        <div class="row">
+          <div class="card m-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <div style="height: 190px; width: 140px; background-color: red;"></div>
+                </div>
+                <div class="col-sm-10 my-auto">
+                  <div class="row">
+                    <div class="col-4">
+                      <h4>Product Name</h4>
+                      <h6>Publisher Name</h6>
+                    </div>
+                    <div class="col-6">
+                      <p>Purchase Date: 1/1/01</p>
+                      <p>Download Date: 1/1/01</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-primary">Show/Hide</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="card m2">
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="row">
+          <div class="card m-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <div style="height: 190px; width: 140px; background-color: red;"></div>
+                </div>
+                <div class="col-sm-10 my-auto">
+                  <div class="row">
+                    <div class="col-4">
+                      <h4>Product Name</h4>
+                      <h6>Publisher Name</h6>
+                    </div>
+                    <div class="col-6">
+                      <p>Purchase Date: 1/1/01</p>
+                      <p>Download Date: 1/1/01</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-primary">Show/Hide</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="card m2">
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <a href="">Download 1</a>
+                    </div>
+                    <div class="col-2">
+                      <p>5000000 MB</p>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary">Download</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
     </div>
   </div>
