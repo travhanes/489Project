@@ -20,69 +20,142 @@
   <title>Promotions</title>
 </head>
 
-<body>
-  <!--Top Banner-->
-  <div class="row row-cols-3" style="background-color: #d64d4d; height: 50px; width: 100%; padding: 5px;">
-    <div class="wfit" style="margin-top: 5px;">
-        <a href="index.html">
+<body style="background-color: black;">
+  <div class="container-fluid">
+    <!--Top Banner-->
+    <div class="row" style="background-color: #d64d4d;">
+
+      <div class="col-10" style="margin-top: 5px;">
+        <p style="color: white;">
+          <a href="index.html">
             <img src="../../images/logo.png" style="height: 30px;">
-        </a>
-    </div>
-    <div style="width: 80%; margin-top: 8px;"><p style="color: white;">The Largest RPG Download Store!</p></div>
-    <div class="wfit"><button class="login">Log in</button></div>
-</div>
-  <!--Search Banner-->
-  <div class="hfit" style="width: 100%;">
-    <div class="row row-cols-4" style="padding: 5px;">
-      <div class="wfit"><button>Browse Categories</button></div>
-      <div style="width: 80%;"><input class="search-bar w-100 h-100" placeholder="Search..."></div>
-      <div class="wfit"><button>Search</button></div>
-      <div class="wfit"><a href="">Cart</a></div>
-    </div>
-  </div>
-
-  <footer class="bg-body-tertiary text-center text-lg-start">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
-  
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-            voluptatem veniam, est atque cumque eum delectus sint!
-          </p>
-        </div>
-        <!--Grid column-->
-  
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
-  
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-            voluptatem veniam, est atque cumque eum delectus sint!
-          </p>
-        </div>
-        <!--Grid column-->
+          </a>
+          The Largest RPG Download Store!
+        </p>
       </div>
-      <!--Grid row-->
-    </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2020 Copyright:
-      <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <div class="col-2">
+        <a href="../account/account.html">
+          <button class="login">Account</button>
+        </a>
+
+        <a href="../account/library.html">
+          <button class="login">Library</button>
+        </a>
+
+        <button class="login">Log in</button>
+      </div>
+    </div>
+
+    <!--Search Banner-->
+    <div class="row my-2">
+      <div class="col-10">
+        <input class="search-bar w-100 h-100" placeholder="Search...">
+      </div>
+      <div class="col-1">
+        <button class="w-100">Search</button>
+      </div>
+      <div class="col-1">
+        <button class="w-100">
+          <a href="cart.html" style="text-decoration: none; color: white;">Cart</a>
+      </div>
+      </button>
+    </div>
+
+    <!-- breadcrumbs -->
+    <div class="row">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li style="color: white;" class="breadcrumb-item"><a href="#">Home</a></li>
+          <li style="color: white;" class="breadcrumb-item"><a href="#">Library</a></li>
+          <li style="color: white;" class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- title and description -->
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col">
+        <div class="row text-center">
+          <h3 style="color: white;">Promotion Title</h3>
+        </div>
+        <div class="row text-center">
+          <p style="color: white;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam adipisci excepturi eaque exercitationem porro unde quasi optio recusandae nisi animi. Delectus optio in vel eveniet suscipit laboriosam quasi aliquam doloremque?</p>
+        </div>
+      </div>
+      <div class="col-4"></div>
+    </div>
+
+    <!-- products -->
+    <div class="row my-4">
+      <div class="col-3"></div>
+      <div class="col-2 d-flex justify-content-center">
+        <a href="product.html">
+          <div style="height: 250px; width: 200px; background-color: red;"></div>
+        </a>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        <a href="product.html">
+          <div style="height: 250px; width: 200px; background-color: red;"></div>
+        </a>
+      </div>
+      <div class="col-2 d-flex justify-content-center">
+        <a href="product.html">
+          <div style="height: 250px; width: 200px; background-color: red;"></div>
+        </a>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+
+    <footer class="bg-body-tertiary text-center text-lg-start">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Footer text</h5>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+              voluptatem veniam, est atque cumque eum delectus sint!
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Footer text</h5>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+              voluptatem veniam, est atque cumque eum delectus sint!
+            </p>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2020 Copyright
+        <a href="index.html">
+          <img src="../../images/logo.png" style="height: 30px;">
+        </a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
