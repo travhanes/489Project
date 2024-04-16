@@ -1,12 +1,12 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
 
-class ShoppingCart extends Model {
+class Order extends Model {
 
-    static async findCart(userid) {
+    static async findOrder(orderid) {
         try {
-            const cart = await ShoppingCart.findByPk(userid)
-            return cart ? cart : null;
+            const order = await Order.findByPk(orderid)
+            return order ? order : null;
         } catch (error) {
             console.log(error)
             return null
@@ -14,7 +14,11 @@ class ShoppingCart extends Model {
     }
 }
 
-ShoppingCart.init({
+Order.init({
+  orderid: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   userid: {
     type: DataTypes.INTEGER,
     allowNull: false
@@ -23,17 +27,17 @@ ShoppingCart.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  quantity: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+  dateOrdered: {
+    type: DataTypes.DATE,
+    allowNull: true
   },
-  dateAdded: {
+  dateDelivered: {
     type: DataTypes.DATE,
     allowNull: true
   }
 }, {
   sequelize, 
-  modelName: 'ShoppingCart'
+  modelName: 'Order'
 });
 
-module.exports = ShoppingCart
+module.exports = Order
