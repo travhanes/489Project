@@ -22,53 +22,16 @@
 
 <body style="background-color: black;">
   <div class="container-fluid">
-    <!--Top Banner-->
-    <div class="row" style="background-color: #d64d4d;">
+    <%- include('header')  %>
 
-      <div class="col-10" style="margin-top: 5px;">
-        <p style="color: white;">
-          <a href="/">
-            <img src="../../images/logo.png" style="height: 30px;">
-          </a>
-          The Largest RPG Download Store!
-        </p>
-      </div>
-
-      <div class="col-2">
-        <a href="../account/account.ejs">
-          <button class="login">Account</button>
-        </a>
-
-        <a href="../account/library.ejs">
-          <button class="login">Library</button>
-        </a>
-
-        <button class="login">Log in</button>
-      </div>
-    </div>
-
-    <!--Search Banner-->
-    <div class="row my-2">
-      <div class="col-10">
-        <input class="search-bar w-100 h-100" placeholder="Search...">
-      </div>
-      <div class="col-1">
-        <button class="w-100">Search</button>
-      </div>
-      <div class="col-1">
-        <button class="w-100">
-          <a href="cart.ejs" style="text-decoration: none; color: white;">Cart</a>
-      </div>
-      </button>
-    </div>
+    <%- include('searchBanner')  %>    
 
     <!-- Breadcrumbs -->
     <div class="row">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li style="color: white;" class="breadcrumb-item"><a href="#">Home</a></li>
-          <li style="color: white;" class="breadcrumb-item"><a href="#">Library</a></li>
-          <li style="color: white;" class="breadcrumb-item active" aria-current="page">Data</li>
+          <li style="color: white;" class="breadcrumb-item"><a href="/">Browse</a></li>
+          <li style="color: white;" class="breadcrumb-item active" aria-current="page"><%= product.productname %></li>
         </ol>
       </nav>
     </div>
@@ -92,7 +55,7 @@
           <div class="col">
             <div class="row">
               <h1><%= product.productname %></h1>
-              <!--<h1>Product Name</h1>-->
+
             </div>
             <div class="row">
               <h5>Product Publisher</h5>
@@ -149,49 +112,7 @@
       </div>
     </div>
 
-
-    <footer class="bg-body-tertiary text-center text-lg-start">
-      <!-- Grid container -->
-      <div class="container p-4">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Footer text</h5>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-              voluptatem veniam, est atque cumque eum delectus sint!
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Footer text</h5>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-              voluptatem veniam, est atque cumque eum delectus sint!
-            </p>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2020 Copyright
-        <a href="/">
-          <img src="../../images/logo.png" style="height: 30px;">
-        </a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    <%- include('footer') %>
 
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

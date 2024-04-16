@@ -13,4 +13,8 @@ router.get('/', async function(req, res, next) {
   res.render('store/index', { products });
 });
 
+router.get('/cart', function(req, res, next) {
+  res.render('store/cart.ejs')
+})
+
 module.exports = router;

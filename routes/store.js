@@ -1,5 +1,6 @@
 var express = require('express');
 const User = require('../models/User');
+const Publisher = require('../models/Publisher');
 const Product = require('../models/Product');
 var router = express.Router();
 
@@ -7,6 +8,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.redirect('/');
 });
+
+router.get('/cart.ejs', function(req, res, next) {
+  res.redirect('/')
+}) 
 
 router.get('/product.ejs', function(req, res, next) {
   res.redirect('product/0');
