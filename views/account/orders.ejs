@@ -28,59 +28,7 @@
 <body>
   <div class="container-fluid" style="height: 100vh;">
     <div class="row h-100">
-      <!-- Navbar -->
-      <div class="col-3 sidebar p-3" style="background-color: aliceblue;">
-        <a href="../store"> 
-          <img src="../../images/logo.png" style="height: 30px;">
-        </a>
-        <div class="row h-50">
-          <div class="col-sm-12 my-auto">
-            <div class="row text-center">
-              <h2>Account Balance:</h2>
-              <h3>$50</h3>
-            </div>
-            <div class="row">
-              <div class="col"></div>
-              <div class="col">
-                <button class="btn btn-primary">Redeem Gift Card</button>
-              </div>
-              <div class="col"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row border-top">
-          <nav>
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link text-center" id="v-pills-home-tab" data-toggle="pill" href="account.ejs" role="tab"
-                aria-controls="v-pills-home" aria-selected="false">Account</a>
-              <a class="nav-link text-center" id="v-pills-profile-tab" data-toggle="pill" href="articles.ejs" role="tab"
-                aria-controls="v-pills-profile" aria-selected="true">Articles</a>
-              <a class="nav-link text-center" id="v-pills-messages-tab" data-toggle="pill" href="join.ejs" role="tab"
-                aria-controls="v-pills-messages" aria-selected="false">Join</a>
-              <a class="nav-link text-center" id="v-pills-settings-tab" data-toggle="pill" href="library.ejs" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Library</a>
-              <a class="nav-link text-center" id="v-pills-settings-tab" data-toggle="pill" href="newsletter.ejs" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Newsletter</a>
-              <a class="nav-link active text-center" id="v-pills-settings-tab" data-toggle="pill" href="orders.ejs" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Orders</a>
-              <a class="nav-link text-center" id="v-pills-settings-tab" data-toggle="pill" href="publisher.ejs" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Publisher</a>
-              <a class="nav-link text-center" id="v-pills-settings-tab" data-toggle="pill" href="wishlist.ejs" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
-            </div>
-            <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              </div>
-              <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
-                aria-labelledby="v-pills-profile-tab"></div>
-              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-              </div>
-              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
+      <%- include('navbar') %>
 
       <!-- Content -->
       <div class="col-9 scrollable-column p-5" style="background-color: aqua;">
