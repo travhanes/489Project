@@ -57,8 +57,8 @@ app.use(function (err, req, res, next) {
 
 async function setup() {
   for (var i = 0; i < 6; i++) {
-    await Publisher.create({ publisherid: i, publishername: 'Publisher ' + i, publisherdesc: 'Description' + i });
-    await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productdesc: 'Description' + i, productprice: i });
+    await Publisher.create({ publisherid: i, publishername: 'Publisher ' + i, publisherdesc: 'Description ' + i });
+    await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productimage: 'example-thumbnail.jpg', productdesc: 'Description ' + i, productprice: i });
   }
 }
 

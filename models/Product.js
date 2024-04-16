@@ -28,6 +28,10 @@ Product.init({
     type: DataTypes.STRING,
     allowNull: false
   },
+  productimage: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   productdesc: {
     type: DataTypes.TEXT,
     allowNull: true

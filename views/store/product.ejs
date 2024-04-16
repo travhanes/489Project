@@ -39,14 +39,17 @@
     <div class="row">
       <div class="col-3 p-4">
         <div class="row py-3 d-flex justify-content-center">
-          <div style="height: 360px; width: 300px; background-color: red;"></div>
+          <div style="height: 360px; width: 300px; background-color: red;">
+            <img style="height: 100%; width: 100%;" src=<%= "../../images/products/" + product.productimage %>>
+          </div>
         </div>
         <div class="row py-3">
           <div style="background-color: white;">
             <h4>Publisher Information</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, temporibus soluta vel error et
+            <p><%= publisher.publisherdesc %></p>
+            <!--<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, temporibus soluta vel error et
               maiores, veritatis minima odit aspernatur delectus facilis quis repellendus natus laudantium quae nostrum
-              ab, laborum dolores?</p>
+              ab, laborum dolores?</p>-->
           </div>
         </div>
       </div>
@@ -58,7 +61,8 @@
 
             </div>
             <div class="row">
-              <h5>Product Publisher</h5>
+              <h5><%= publisher.publishername %></h5>
+              <!--<h5>Product Publisher</h5>-->
             </div>
           </div>
         </div>
