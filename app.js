@@ -54,18 +54,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-/*async function setup() {
-  const subu = await User.create({ username: "subu", password: "1234" });
-  console.log("subu instance created...");
-  const webdev = await Course.create({
-    courseid: "CPTS489",
-    coursename: "Web Development",
-    semester: "Spring",
-    coursedesc: "Introduction to Web Development",
-    enrollnum: 80,
-  });
-}*/
-
 async function setup() {
   for (var i = 0; i < 6; i++) {
     await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productdesc: 'Description' + i, productprice: i });
@@ -75,10 +63,6 @@ async function setup() {
 sequelize.sync({ force: true }).then(() => {
   console.log("Sequelize Sync Completed...");
   setup().then(() => console.log("Setup complete"));
-  //CREATE TABLE IF NOT EXISTS Product ( productid: INTEGER PRIMARY KEY NOT NULL, publisherid: INTEGER NOT NULL, productname STRING NOT NULL, productdesc TEXT, productprice FLOAT NOT NULL );
-  //INSERT INTO PRODUCT VALUES (0, 0, 'Blank', 'Blank', 0);
-  //const subu = await User.create({ username: "subu", password: "1234" });
-  //setup().then(() => console.log("User setup complete"));
 });
 
 module.exports = app;
