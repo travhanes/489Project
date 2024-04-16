@@ -10,6 +10,6 @@ DELETE FROM User;
 DELETE FROM Product;
 DELETE FROM Publisher;
 
-INSERT INTO USER VALUES ('subu', '1234');
+--INSERT INTO USER VALUES ('subu', '1234');
 
-INSERT INTO COURSE VALUES ('CPTS_489', 'Web Development', 'Spring', 'course about web development', 80, 'subu');
+--INSERT INTO COURSE VALUES ('CPTS_489', 'Web Development', 'Spring', 'course about web development', 80, 'subu');
