@@ -13,3 +13,4 @@ DELETE FROM Publisher;
 --INSERT INTO USER VALUES ('subu', '1234');
 
 --INSERT INTO COURSE VALUES ('CPTS_489', 'Web Development', 'Spring', 'course about web development', 80, 'subu');
+--INSERT INTO PRODUCT VALUES (0, 0, 'Blank', 'Blank', 0);

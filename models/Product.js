@@ -20,6 +20,10 @@ Product.init({
     primaryKey: true,
     allowNull: false
   },
+  publisherid: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   productname: {
     type: DataTypes.STRING,
     allowNull: false
@@ -30,10 +34,6 @@ Product.init({
   },
   productprice: {
     type: DataTypes.FLOAT, 
-    allowNull: false
-  },
-  publisherid: {
-    type: DataTypes.INTEGER,
     allowNull: false
   }
 }, {

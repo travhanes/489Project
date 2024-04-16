@@ -6,6 +6,7 @@ var logger = require("morgan");
 const session = require("express-session");
 const sequelize = require("./db");
 const User = require("./models/User");
+const Product = require("./models/Product")
 
 var indexRouter = require("./routes/index");
 var storeRouter = require("./routes/store");
@@ -65,8 +66,16 @@ app.use(function (err, req, res, next) {
   });
 }*/
 
+async function setup() {
+  await Product.create({ productid: 0, publisherid: 0, productname: 'Blank Name', productdesc: 'Blank Description', productprice: 0 });
+}
+
 sequelize.sync({ force: true }).then(() => {
   console.log("Sequelize Sync Completed...");
+  setup().then(() => console.log("Setup complete"));
+  //CREATE TABLE IF NOT EXISTS Product ( productid: INTEGER PRIMARY KEY NOT NULL, publisherid: INTEGER NOT NULL, productname STRING NOT NULL, productdesc TEXT, productprice FLOAT NOT NULL );
+  //INSERT INTO PRODUCT VALUES (0, 0, 'Blank', 'Blank', 0);
+  //const subu = await User.create({ username: "subu", password: "1234" });
   //setup().then(() => console.log("User setup complete"));
 });
 
