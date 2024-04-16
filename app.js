@@ -67,7 +67,9 @@ app.use(function (err, req, res, next) {
 }*/
 
 async function setup() {
-  await Product.create({ productid: 0, publisherid: 0, productname: 'Blank Name', productdesc: 'Blank Description', productprice: 0 });
+  for (var i = 0; i < 6; i++) {
+    await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productdesc: 'Description' + i, productprice: i });
+  }
 }
 
 sequelize.sync({ force: true }).then(() => {
