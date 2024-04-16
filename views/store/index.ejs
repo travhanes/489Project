@@ -18,45 +18,9 @@
 
 <body style="background-color: black;">
   <div class="container-fluid">
-    <!--Top Banner-->
-    <div class="row" style="background-color: #d64d4d;">
+    <%- include('header')  %>
 
-      <div class="col-10" style="margin-top: 5px;">
-        <p style="color: white;">
-          <a href="/">
-            <img src="../../images/logo.png" style="height: 30px;">
-          </a>
-          The Largest RPG Download Store!
-        </p>
-      </div>
-
-      <div class="col-2">
-        <a href="../account/account.ejs">
-          <button class="login">Account</button>
-        </a>
-
-        <a href="../account/library.ejs">
-          <button class="login">Library</button>
-        </a>
-
-        <button class="login">Log in</button>
-      </div>
-    </div>
-
-    <!--Search Banner-->
-    <div class="row my-2">
-      <div class="col-10">
-        <input class="search-bar w-100 h-100" placeholder="Search...">
-      </div>
-      <div class="col-1">
-        <button class="w-100">Search</button>
-      </div>
-      <div class="col-1">
-        <button class="w-100">
-          <a href="store/cart.ejs" style="text-decoration: none; color: white;">Cart</a>
-      </div>
-      </button>
-    </div>
+    <%- include('searchBanner')  %>    
 
     <!--Carousel Banner-->
     <div class="row my-3">
