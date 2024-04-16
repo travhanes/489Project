@@ -17,6 +17,7 @@ class Order extends Model {
 Order.init({
   orderid: {
     type: DataTypes.INTEGER,
+    primaryKey: true,
     allowNull: false
   },
   userid: {
