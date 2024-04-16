@@ -19,8 +19,8 @@ router.get('/product.ejs', function(req, res, next) {
 
 router.get('/product/:productid', async function(req, res, next) {
   const product = await Product.findProduct(parseInt(req.params.productid));
-  console.log(product);
-  res.render('store/product', { product });
+  const publisher = await Publisher.findPublisher(product.publisherid);
+  res.render('store/product', { product, publisher });
 });
 
 router.get('/:page', function(req, res, next) {
