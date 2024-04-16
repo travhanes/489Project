@@ -4,10 +4,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.query.msg){
-    res.locals.msg = req.query.msg
-  }
-  res.render('store/index');
+  res.redirect('/');
+});
+
+router.get('/:page', function(req, res, next) {
+  res.render('store/' + req.params.page);
 });
 
 module.exports = router;

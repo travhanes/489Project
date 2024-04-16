@@ -8,6 +8,8 @@ const sequelize = require("./db");
 const User = require("./models/User");
 
 var indexRouter = require("./routes/index");
+var storeRouter = require("./routes/store");
+var accountRouter = require("./routes/account")
 
 var app = express();
 
@@ -32,8 +34,8 @@ app.use(
 );*/
 
 app.use("/", indexRouter);
-/*app.use("/courses", coursesRouter);
-app.use("/api", apiRouter);*/
+app.use("/store", storeRouter);
+app.use("/account", accountRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
