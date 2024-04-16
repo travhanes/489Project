@@ -7,6 +7,7 @@ const session = require("express-session");
 const sequelize = require("./db");
 const User = require("./models/User");
 const Product = require("./models/Product")
+const Publisher = require("./models/Publisher")
 
 var indexRouter = require("./routes/index");
 var storeRouter = require("./routes/store");
@@ -56,6 +57,7 @@ app.use(function (err, req, res, next) {
 
 async function setup() {
   for (var i = 0; i < 6; i++) {
+    await Publisher.create({ publisherid: i, publishername: 'Publisher ' + i, publisherdesc: 'Description' + i });
     await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productdesc: 'Description' + i, productprice: i });
   }
 }
