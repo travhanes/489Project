@@ -108,11 +108,14 @@
           <div class="row carousel-content">
             <div class="col-sm-12 my-auto">
               <div class="row">
-                <div class="col d-flex justify-content-center">
-                  <a href="store/product.ejs">
-                    <div style="height: 190px; width: 140px; background-color: red;"></div>
-                  </a>
-                </div>
+                <!--Product-->
+                <% for (product of products) { %>
+                  <div class="col d-flex justify-content-center">
+                    <a href=<%= "store/product/" + product.productid %>>
+                      <div style="height: 190px; width: 140px; background-color: red;"></div>
+                    </a>
+                  </div>
+                <% } %>
                 <div class="col d-flex justify-content-center">
                   <a href="store/product.ejs">
                     <div style="height: 190px; width: 140px; background-color: red;"></div>
