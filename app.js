@@ -76,8 +76,8 @@ async function setup() {
 
   await ShoppingCart.create({userid: uid1, productid: 1, quantity: 90, dateAdded: date})
   await ShoppingCart.create({userid: uid1, productid: 4, quantity: 10, dateAdded: date})
-  await Order.create({orderid: 1, userid: uid1, status: "On the way", dateOrdered: date})
-  await Order.create({orderid: 2, userid: uid1, status: "Not yet shipped", dateOrdered: date})
+  await Order.create({orderid: 1, userid: uid1, status: "On the way", dateOrdered: date, paymentOption: 1111})
+  await Order.create({orderid: 2, userid: uid1, status: "Not yet shipped", dateOrdered: date, paymentOption: 1111})
   await OrderItem.create({orderid: 1, productid: 3, quantity: 42})
   await OrderItem.create({orderid: 1, productid: 1, quantity: 12})
   await OrderItem.create({orderid: 1, productid: 2, quantity: 7})

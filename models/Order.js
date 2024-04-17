@@ -35,6 +35,10 @@ Order.init({
   dateDelivered: {
     type: DataTypes.DATE,
     allowNull: true
+  },
+  paymentOption: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 }, {
   sequelize, 

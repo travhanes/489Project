@@ -40,30 +40,33 @@ router.get('/wishlist/delete/:productid', async function(req, res, next) {
   res.redirect('/account/wishlist');
 })
 
-router.post('/cart/add/:productid', async function(req, res, next) {
-  try {
-    user = await User.findUser("testuser", "123")
+router.post('/wishlist/add/:productid', async function(req, res, next) {
+  console.log("HELLO");
 
-    await ShoppingCart.create({
+  user = await User.findUser("testuser", "123")
+  
+  try {
+    await Wishlist.create({
       userid: user.userid,
       productid: req.params.productid,
-      quantity: 1,
       dateAdded: new Date('2024-04-17')
     })
 
-    carts = await ShoppingCart.findCart(user.userid)
-  
+    wishes = await Wishlist.findWishlist(user.userid)
+
     products = []
-    for (cart of carts) {
-      products.push(await Product.findProduct(cart.dataValues.productid));
+    for (wish of wishes) {
+      products.push(await Product.findProduct(wish.dataValues.productid));
     }
 
-    res.redirect('/store/cart')
-  } catch (error) {
-    console.log("ADD TO SHOPPING CART ERROR: ", error);
+  res.redirect('/account/wishlist.ejs');
+  }
+  catch (error) {
+    console.log('ERROR: Product already in wishlist!');
+    console.log(error);
     res.redirect('/store/product/' + req.params.productid)
   }
-})
+});
 
 router.get('/:page', function(req, res, next) {
   res.render('account/' + req.params.page, { page: req.params.page });
