@@ -29,4 +29,20 @@ router.get('/cart', async function(req, res, next) {
   res.render('store/cart.ejs', { products })
 })
 
+router.get('/cart/delete/:productid', async function(req, res, next) {
+
+  user = await User.findUser("testuser", "123")
+  cart = await ShoppingCart.findCartProduct(user.userid, req.params.productid)
+  cart.destroy()
+
+  carts = await ShoppingCart.findCart(user.userid)
+
+  products = []
+  for (cart of carts) {
+    products.push(await Product.findProduct(cart.dataValues.productid));
+  }
+
+  res.render('store/cart.ejs', { products })
+})
+
 module.exports = router;
