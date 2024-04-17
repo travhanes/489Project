@@ -27,12 +27,10 @@ class ShoppingCart extends Model {
 ShoppingCart.init({
   userid: {
     type: DataTypes.UUIDV4,
-    primaryKey: true,
     allowNull: false
   },
   productid: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
     allowNull: false
   },
   quantity: {

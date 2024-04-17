@@ -12,6 +12,16 @@ class Wishlist extends Model {
             return null
         }
     }
+
+    static async findWishlistProduct(userid, productid) {
+      try {
+        const wish = await Wishlist.findOne({ where: { userid: userid, productid: productid } })
+        return wish ? wish : null;
+      } catch (error) {
+        console.log(error)
+        return null
+      }
+    }
 }
 
 Wishlist.init({

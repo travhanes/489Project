@@ -10,7 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/wishlist', async function(req, res, next) {
-  
+  console.log("HELLO");
+
+
   user = await User.findUser("testuser", "123")
   
   wishlists = await Wishlist.findWishlist(user.userid)
@@ -18,6 +20,23 @@ router.get('/wishlist', async function(req, res, next) {
   products = []
   for (wishlist of wishlists) {
     products.push(await Product.findProduct(wishlist.dataValues.productid));
+  }
+
+  res.render('account/wishlist.ejs', { user, page: 'wishlist', products });
+})
+
+router.get('/account/wishlist/delete/:productid', async function(req, res, next) {
+  console.log("GOODBYE");
+
+  user = await User.findUser("testuser", "123")
+  wish = await Wishlist.findWishlistProduct(user.userid, req.params.productid)
+  wish.destroy()
+
+  wishes = await Wishlist.findWishlist(user.userid)
+
+  products = []
+  for (wish of wishes) {
+    products.push(await Product.findProduct(wish.dataValues.productid));
   }
 
   res.render('account/wishlist.ejs', { user, page: 'wishlist', products });
