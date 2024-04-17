@@ -2,6 +2,7 @@ var express = require('express');
 const User = require('../models/User');
 const ShoppingCart = require('../models/ShoppingCart')
 const Product = require("../models/Product")
+const Wishlist = require('../models/Wishlist')
 
 var router = express.Router();
 
@@ -69,5 +70,33 @@ router.post('/cart/add/:productid', async function(req, res, next) {
     res.redirect('/store/product/' + req.params.productid)
   }
 })
+
+router.post('/account/wishlist/add/:productid', async function(req, res, next) {
+  console.log("HELLO");
+
+  user = await User.findUser("testuser", "123")
+  
+  try {
+    await Wishlist.create({
+      userid: user.userid,
+      productid: req.params.productid,
+      dateAdded: new Date('2024-04-17')
+    })
+
+    wishes = await Wishlist.findWishlist(user.userid)
+
+    products = []
+    for (wish of wishes) {
+      products.push(await Product.findProduct(wish.dataValues.productid));
+    }
+
+  res.redirect('/account/wishlist.ejs');
+  }
+  catch (error) {
+    console.log('ERROR: Product already in wishlist!');
+    console.log(error);
+    res.redirect('/store/product/' + req.params.productid)
+  }
+});
 
 module.exports = router;

@@ -10,9 +10,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/wishlist', async function(req, res, next) {
-  console.log("HELLO");
-
-
   user = await User.findUser("testuser", "123")
   
   wishlists = await Wishlist.findWishlist(user.userid)
@@ -25,8 +22,8 @@ router.get('/wishlist', async function(req, res, next) {
   res.render('account/wishlist.ejs', { user, page: 'wishlist', products });
 })
 
-router.get('/account/wishlist/delete/:productid', async function(req, res, next) {
-  console.log("GOODBYE");
+router.get('/wishlist/delete/:productid', async function(req, res, next) {
+  console.log('DELETE REQUESTED');
 
   user = await User.findUser("testuser", "123")
   wish = await Wishlist.findWishlistProduct(user.userid, req.params.productid)
