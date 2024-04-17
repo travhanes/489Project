@@ -92,7 +92,7 @@
                 <button class="btn btn-primary">Add to Cart</button>
               </form>
             </a>
-            <form class="row my-2 d-flex justify-content-center" method="post" action=<%= "/store/product/" + product.productid %>>
+            <form class="row my-2 d-flex justify-content-center" method="post" action=<%= "/account/wishlist/add/" + product.productid %>>
               <button class="btn btn-secondary">Add to Wishlist</button>
             </form>
             <%- include('wishlistAlert') %>
