@@ -66,16 +66,14 @@
           </div>
         </div>
 
-
-        <!-- Items in Library -->
-        <!-- Item 1 -->
+        <% for(order of parsed_orders) { %> 
         <div class="row mb-4">
           <div class="col-1"></div>
           <div class="col-6">
             <div class="card m-0" style="background-color: lightcoral;">
               <div class="card-body">
                 <div class="card-title">
-                  <h5>Order #: 65897120345, Date Ordered: 4/1/2007</h5>
+                  <h5><%= "Order #: " + order.orderid + "Date Ordered: " + order.dateOrdered %></h5>
                 </div>
               </div>
             </div>
@@ -85,222 +83,49 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-4">
-                  <p>Deliver Status: <span style="font-weight: bold;">Out for Delivery</span></p>
+                  <p>Delivery Status: <span style="font-weight: bold;"><%= order.status %></span></p>
                 </div>
                 <div class="col-8">
                   <div class="row">
-                    <h5>Total Cost: $34.67</h5>
+                    <h5>Total Cost: INCLUDE TOTAL COST IN ORDER</h5>
                   </div>
                   <div class="row">
-                    <h6>Payment Option: Card ending in 4215</h6>
+                    <h6><%= "Payment Option: Card ending in " + order.paymentOption %></h6>
                   </div>
                 </div>
               </div>
+              
+              <% for (product of order_dictionary[order.orderid]) { %>
               <!-- Product -->
               <div class="row">
                 <div class="card m2">
                   <div class="row">
                     <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
+                      <div style="height: 190px; width: 140px; background-color: red;">
+                        <img style="height: 100%; width: 100%;" src=<%= "../../images/products/" + product.productimage %>>
+                      </div>
                     </div>
                     <div class="col-sm-8 my-auto">
                       <div class="row">
                         <div class="col-8">
                           <h5><a href="">
-                            Product Name
+                            <%= product.productname %>
                           </a>
                         </h5>
                         </div>
                         <div class="col-4">
-                          <h3>$9.99</h3>
+                          <h3><%= "$" + product.productprice %></h3>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Product -->
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-8 my-auto">
-                      <div class="row">
-                        <div class="col-8">
-                          <h5><a href="">
-                            Product Name
-                          </a>
-                        </h5>
-                        </div>
-                        <div class="col-4">
-                          <h3>$9.99</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Product -->
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-8 my-auto">
-                      <div class="row">
-                        <div class="col-8">
-                          <h5><a href="">
-                            Product Name
-                          </a>
-                        </h5>
-                        </div>
-                        <div class="col-4">
-                          <h3>$9.99</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <% } %>
             </div>
           </div>
         </div>
-
-        <!-- Item 1 -->
-        <div class="row mb-4">
-          <div class="col-1"></div>
-          <div class="col-6">
-            <div class="card m-0" style="background-color: lightcoral;">
-              <div class="card-body">
-                <div class="card-title">
-                  <h5>Order #: 65897120345, Date Ordered: 4/1/2007</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5"></div>
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-4">
-                  <p>Deliver Status: <span style="font-weight: bold;">Delivered</span></p>
-                </div>
-                <div class="col-8">
-                  <div class="row">
-                    <h5>Total Cost: $34.67</h5>
-                  </div>
-                  <div class="row">
-                    <h6>Payment Option: Card ending in 4215</h6>
-                  </div>
-                </div>
-              </div>
-              <!-- Product -->
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-8 my-auto">
-                      <div class="row">
-                        <div class="col-8">
-                          <h5><a href="">
-                            Product Name
-                          </a>
-                        </h5>
-                        </div>
-                        <div class="col-4">
-                          <h3>$9.99</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Product -->
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-8 my-auto">
-                      <div class="row">
-                        <div class="col-8">
-                          <h5><a href="">
-                            Product Name
-                          </a>
-                        </h5>
-                        </div>
-                        <div class="col-4">
-                          <h3>$9.99</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="row mb-4">
-          <div class="col-1"></div>
-          <div class="col-6">
-            <div class="card m-0" style="background-color: lightcoral;">
-              <div class="card-body">
-                <div class="card-title">
-                  <h5>Order #: 65897120345, Date Ordered: 4/1/2007</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5"></div>
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-4">
-                  <p>Deliver Status: <span style="font-weight: bold;">Delivered</span></p>
-                </div>
-                <div class="col-8">
-                  <div class="row">
-                    <h5>Total Cost: $34.67</h5>
-                  </div>
-                  <div class="row">
-                    <h6>Payment Option: Card ending in 4215</h6>
-                  </div>
-                </div>
-              </div>
-              <!-- Product -->
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-4">
-                      <div style="height: 150px; width: 100px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-8 my-auto">
-                      <div class="row">
-                        <div class="col-8">
-                          <h5><a href="">
-                            Product Name
-                          </a>
-                        </h5>
-                        </div>
-                        <div class="col-4">
-                          <h3>$9.99</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% } %>
 
         
       </div>

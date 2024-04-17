@@ -1,12 +1,12 @@
 const sequelize = require('../db')
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes, or } = require('sequelize')
 
 class OrderItem extends Model {
 
-    static async findOrderItem(orderid) {
+    static async findItems(orderid) {
         try {
-            const order = await Order.findByPk(orderid)
-            return order ? order : null;
+            const items = await OrderItem.findAll({where: {orderid: orderid}})
+            return items ? items : null;
         } catch (error) {
             console.log(error)
             return null

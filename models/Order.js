@@ -12,6 +12,16 @@ class Order extends Model {
             return null
         }
     }
+
+    static async findOrders(userid) {
+        try {
+            const orders = await Order.findAll({where:{userid: userid}})
+            return orders ? orders : null;
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    }
 }
 
 Order.init({
