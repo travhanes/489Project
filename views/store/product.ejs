@@ -47,9 +47,6 @@
           <div style="background-color: white;">
             <h4>Publisher Information</h4>
             <p><%= publisher.publisherdesc %></p>
-            <!--<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, temporibus soluta vel error et
-              maiores, veritatis minima odit aspernatur delectus facilis quis repellendus natus laudantium quae nostrum
-              ab, laborum dolores?</p>-->
           </div>
         </div>
       </div>
@@ -62,7 +59,6 @@
             </div>
             <div class="row">
               <h5><%= publisher.publishername %></h5>
-              <!--<h5>Product Publisher</h5>-->
             </div>
           </div>
         </div>
@@ -91,18 +87,20 @@
             </form>
           </div>
           <div class="col-sm-5 my-auto">
-            <div class="row my-2 d-flex justify-content-center">
-              <button class="btn btn-primary">Add to Cart</button>
-            </div>
-            <div class="row my-2 d-flex justify-content-center">
+            <a href="/cart">
+             <div class="row my-2 d-flex justify-content-center">
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </a>
+            <form class="row my-2 d-flex justify-content-center" method="post" action="/store/addToWishlist">
               <button class="btn btn-secondary">Add to Wishlist</button>
-            </div>
+            </form>
+            <%- include('wishlistAlert') %>
           </div>
         </div>
         <div class="row my-4" style="background-color: white;">
           <h3>Product Description</h3>
           <p><%= product.productdesc %></p>
-          <!--<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui nulla aut fugiat quae sint esse nemo, quia nostrum totam eum ea ratione voluptates, quo sapiente cumque debitis earum. Minima expedita aliquid amet dignissimos natus. Culpa repellendus consectetur eaque reiciendis minima et impedit cumque veniam modi commodi delectus beatae, temporibus ad animi perspiciatis laboriosam itaque obcaecati ipsum quo quae! Suscipit, ab.</p>-->
         </div>
         <div class="row my-4" style="background-color: white;">
           <h3>Reviews</h3>

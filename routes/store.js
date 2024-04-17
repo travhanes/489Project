@@ -27,4 +27,12 @@ router.get('/:page', function(req, res, next) {
   res.render('store/' + req.params.page);
 });
 
+router.post('/addToWishlist', async function(req, res, next) {
+  try {
+    res.redirect('/store?msg=success')
+  } catch (error) {
+    res.redirect('/store?msg=failure')
+  }
+})
+
 module.exports = router;
