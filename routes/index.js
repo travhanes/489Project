@@ -45,4 +45,29 @@ router.get('/cart/delete/:productid', async function(req, res, next) {
   res.render('store/cart.ejs', { products })
 })
 
+router.post('/cart/add/:productid', async function(req, res, next) {
+  try {
+    user = await User.findUser("testuser", "123")
+
+    await ShoppingCart.create({
+      userid: user.userid,
+      productid: req.params.productid,
+      quantity: 1,
+      dateAdded: new Date('2024-04-17')
+    })
+
+    carts = await ShoppingCart.findCart(user.userid)
+  
+    products = []
+    for (cart of carts) {
+      products.push(await Product.findProduct(cart.dataValues.productid));
+    }
+
+    res.render('store/cart.ejs', { products })
+  } catch (error) {
+    console.log("ADD TO SHOPPING CART ERROR: ", error);
+    res.redirect('/store/product/' + req.params.productid)
+  }
+})
+
 module.exports = router;

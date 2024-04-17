@@ -88,9 +88,9 @@
               <div class="row my-3">
                 <button class="btn btn-primary"> Add to Cart </button>
               </div>
-              <div class="row">
+              <form class="row" method="get" action=<%= "account/wishlist/delete/" + product.productid %>>
                 <button class="btn btn-danger"> Delete </button>
-              </div>
+              </form>
             </div>
             <div class="col-10">
                 <div class="card m-2">
