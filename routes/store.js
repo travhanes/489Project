@@ -9,9 +9,6 @@ router.get('/', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/cart', function(req, res, next) {
-  res.redirect('/')
-}) 
 
 router.get('/product.ejs', function(req, res, next) {
   res.redirect('product/0');
