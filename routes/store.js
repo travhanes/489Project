@@ -86,7 +86,8 @@ router.get('/cart/delete/:productid', async function(req, res, next) {
     products.push(await Product.findProduct(cart.dataValues.productid));
   }
 
-  res.render('store/cart.ejs', { products })
+  res.redirect('/store/cart')
+  //res.render('store/cart.ejs', { products })
 })
 
 router.post('/cart/add/:productid', async function(req, res, next) {
@@ -106,8 +107,9 @@ router.post('/cart/add/:productid', async function(req, res, next) {
     for (cart of carts) {
       products.push(await Product.findProduct(cart.dataValues.productid));
     }
-
-    res.render('store/cart.ejs', { products })
+    
+    res.redirect('/store/cart')
+    //res.render('store/cart.ejs', { products })
   } catch (error) {
     console.log("ADD TO SHOPPING CART ERROR: ", error);
     res.redirect('/store/product/' + req.params.productid)
