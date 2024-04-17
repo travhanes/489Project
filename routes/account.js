@@ -23,7 +23,7 @@ router.get('/wishlist', async function(req, res, next) {
 })
 
 router.get('/wishlist/delete/:productid', async function(req, res, next) {
-  console.log('DELETE REQUESTED');
+  console.log('WISHLIST DELETE REQUESTED');
 
   user = await User.findUser("testuser", "123")
   wish = await Wishlist.findWishlistProduct(user.userid, req.params.productid)
@@ -36,7 +36,8 @@ router.get('/wishlist/delete/:productid', async function(req, res, next) {
     products.push(await Product.findProduct(wish.dataValues.productid));
   }
 
-  res.render('account/wishlist.ejs', { user, page: 'wishlist', products });
+  // res.render('account/wishlist.ejs', { user, page: 'wishlist', products });
+  res.redirect('/account/wishlist');
 })
 
 router.get('/:page', function(req, res, next) {
