@@ -4,6 +4,7 @@ const Publisher = require('../models/Publisher');
 const Product = require('../models/Product');
 const ShoppingCart = require('../models/ShoppingCart');
 const Order = require('../models/Order')
+const OrderItem = require('../models/OrderItem')
 var router = express.Router();
 
 function getRandomArbitrary(min, max) {
@@ -15,19 +16,38 @@ router.get('/', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/orderComplete/:userid', async function(req, res, next) {
+router.get('/orderComplete', async function(req, res, next) {
   console.log("ORDER COMPLETE PAGE OPENED");
 
+  user = await User.findUser("testuser", "123")
+
+  orderid = Math.floor(getRandomArbitrary(10000, 99999)) // could break if the same number is chosen twice...
+
   await Order.create({
-    orderid: getRandomArbitrary(1000, 9999),
-    userid: req.params.userid,
+    orderid: orderid,
+    userid: user.userid,
     status: 'Ordered',
     dateOrdered: Date('2024-05-20'),
-    dateDelivered: null,
+    dateDelivered: Date('2024-05-20'),
     paymentOption: 1111
   })
 
-  res.render('store/orderComplete.ejs', {})
+  carts = await ShoppingCart.findCart(user.userid)
+  products = []
+  for (cart of carts) {
+    products.push(await Product.findProduct(cart.dataValues.productid));
+  }
+
+  for (product of products) {
+    await OrderItem.create({
+      orderid: orderid,
+      productid: product.productid,
+      quantity: 1 // have to get this info from the cart...
+    })
+  }
+
+  res.redirect('/account/orders')
+  // res.render('store/orderComplete.ejs', {})
 })
 
 router.get('/product.ejs', function(req, res, next) {
