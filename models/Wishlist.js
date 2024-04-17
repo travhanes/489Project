@@ -16,7 +16,7 @@ class Wishlist extends Model {
 
 Wishlist.init({
   userid: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUIDV4,
     allowNull: false
   },
   productid: {

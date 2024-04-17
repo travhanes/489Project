@@ -21,11 +21,11 @@ Order.init({
     allowNull: false
   },
   userid: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUIDV4,
     allowNull: false
   },
-  productid: {
-    type: DataTypes.INTEGER,
+  status: {
+    type: DataTypes.TEXT,
     allowNull: false
   },
   dateOrdered: {
