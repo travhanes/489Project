@@ -85,9 +85,9 @@
         <div class="row">
           <div class="row">
             <div class="col-sm-2 my-auto">
-              <div class="row my-3">
+              <form class="row" method="post" action=<%= "/cart/add/" + product.productid %>>
                 <button class="btn btn-primary"> Add to Cart </button>
-              </div>
+              </form>
               <form class="row" method="get" action=<%= "wishlist/delete/" + product.productid %>>
                 <button class="btn btn-danger"> Delete </button>
               </form>
