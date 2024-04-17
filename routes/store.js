@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/cart.ejs', function(req, res, next) {
+router.get('/cart', function(req, res, next) {
   res.redirect('/')
 }) 
 

@@ -4,9 +4,10 @@ const { v4: uuidv4 } = require('uuid');
 
 class User extends Model {
 
+    // note: doesn't find by primary key, instead by username and password
     static async findUser(username, password){
         try {
-            const user = await User.findByPk(username)
+            const user = await User.findOne({ where: {username: username, password: password}})
             if(user && user.password === password){
                 return user
             }else{
@@ -43,10 +44,9 @@ class User extends Model {
 User.init({
   userid: {
     type: DataTypes.UUIDV4,
-    primaryKey: true,
     defaultValue: sequelize.UUIDV4,
+    primaryKey: true,
     allowNull: false
-
   },
   username: {
     type: DataTypes.STRING,

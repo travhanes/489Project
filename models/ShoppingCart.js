@@ -5,7 +5,7 @@ class ShoppingCart extends Model {
 
     static async findCart(userid) {
         try {
-            const cart = await ShoppingCart.findByPk(userid)
+            const cart = await ShoppingCart.findAll({where: { userid: userid  }})
             return cart ? cart : null;
         } catch (error) {
             console.log(error)
