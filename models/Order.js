@@ -28,6 +28,10 @@ Order.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  status: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   dateOrdered: {
     type: DataTypes.DATE,
     allowNull: true

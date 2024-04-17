@@ -8,6 +8,9 @@ const sequelize = require("./db");
 const User = require("./models/User");
 const Product = require("./models/Product")
 const Publisher = require("./models/Publisher")
+const ShoppingCart = require("./models/ShoppingCart")
+const Wishlist = require("./models/Wishlist")
+const Order = require("./models/Order")
 
 var indexRouter = require("./routes/index");
 var storeRouter = require("./routes/store");
@@ -60,6 +63,15 @@ async function setup() {
     await Publisher.create({ publisherid: i, publishername: 'Publisher ' + i, publisherdesc: 'Description ' + i });
     await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productimage: 'example-thumbnail.jpg', productdesc: 'Description ' + i, productprice: i });
   }
+  await User.create({userid: 1234, username: "testuser", password: "123"})
+  await User.create({userid: 4321, username: "testadmin", password: "123", isAdmin: true})
+
+  const date = new Date('2024-04-16');
+
+  await ShoppingCart.create({userid: 1234, productid: 1, quantity: 90, dateAdded: date})
+  await ShoppingCart.create({userid: 1234, productid: 4, quantity: 10, dateAdded: date})
+  await Order.create({orderid: 1, userid: 1234, productid: 3, status: "On the way", dateOrdered: date})
+  await Wishlist.create({userid: 1234, productid: 1, dateAdded: date})
 }
 
 sequelize.sync({ force: true }).then(() => {

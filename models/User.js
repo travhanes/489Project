@@ -17,6 +17,26 @@ class User extends Model {
         }
     }
 
+    static async findAdmin(username, password)
+    {
+      try {
+        const admin = await User.findByPk(username)
+        if(user && user.password === password && user.isAdmin)
+        {
+          return user
+        }
+        else
+        {
+          return null
+        }
+      }
+      catch (err)
+      {
+        console.log(err)
+        return null
+      }
+    }
+
 }
 
 User.init({
@@ -32,6 +52,9 @@ User.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  isAdmin: {
+    type: DataTypes.BOOLEAN,
   }
 }, {
   sequelize, 
