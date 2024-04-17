@@ -5,7 +5,7 @@ class Wishlist extends Model {
 
     static async findWishlist(userid) {
         try {
-            const wishlist = await Wishlist.findByPk(userid)
+            const wishlist = await Wishlist.findAll({where: {userid: userid}})
             return wishlist ? wishlist : null;
         } catch (error) {
             console.log(error)
@@ -17,6 +17,7 @@ class Wishlist extends Model {
 Wishlist.init({
   userid: {
     type: DataTypes.UUIDV4,
+    primaryKey: true,
     allowNull: false
   },
   productid: {
