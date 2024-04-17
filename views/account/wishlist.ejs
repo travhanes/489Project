@@ -81,7 +81,7 @@
 
 
         <!-- Items in Wishlist -->
-        <!-- Item 1 -->
+        <% for (product of products) { %>
         <div class="row">
           <div class="row">
             <div class="col-sm-2 my-auto">
@@ -97,16 +97,18 @@
                   <div class="card-body">
                   <div class="row">
                     <div class="col-2">
-                      <div style="height: 190px; width: 140px; background-color: red;"></div>
+                      <div style="height: 190px; width: 140px; background-color: red;">
+                        <img style="height: 100%; width: 100%;" src=<%= "../../images/products/" + product.productimage %>>
+                      </div>
                     </div>
                     <div class="col-sm-10 my-auto">
                       <div class="row">
                         <div class="col-10">
-                          <h4>Product Name</h4>
-                          <h6>Publisher Name</h6>
+                          <h4><%= product.productname %></h4>
+                          <h6><%= product.publisherid %></h6>
                         </div>
                         <div class="col-2">
-                          <h4>$23.11</h4>
+                          <h4><%= product.productprice %></h4>
                         </div>
                       </div>
                     </div>
@@ -116,80 +118,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Item 1 -->
-        <div class="row">
-          <div class="row">
-            <div class="col-sm-2 my-auto">
-              <div class="row my-3">
-                <button class="btn btn-primary"> Add to Cart </button>
-              </div>
-              <div class="row">
-                <button class="btn btn-danger"> Delete </button>
-              </div>
-            </div>
-            <div class="col-10">
-                <div class="card m-2">
-                  <div class="card-body">
-                  <div class="row">
-                    <div class="col-2">
-                      <div style="height: 190px; width: 140px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-10 my-auto">
-                      <div class="row">
-                        <div class="col-10">
-                          <h4>Product Name</h4>
-                          <h6>Publisher Name</h6>
-                        </div>
-                        <div class="col-2">
-                          <h4>$23.11</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 1 -->
-        <div class="row">
-          <div class="row">
-            <div class="col-sm-2 my-auto">
-              <div class="row my-3">
-                <button class="btn btn-primary"> Add to Cart </button>
-              </div>
-              <div class="row">
-                <button class="btn btn-danger"> Delete </button>
-              </div>
-            </div>
-            <div class="col-10">
-                <div class="card m-2">
-                  <div class="card-body">
-                  <div class="row">
-                    <div class="col-2">
-                      <div style="height: 190px; width: 140px; background-color: red;"></div>
-                    </div>
-                    <div class="col-sm-10 my-auto">
-                      <div class="row">
-                        <div class="col-10">
-                          <h4>Product Name</h4>
-                          <h6>Publisher Name</h6>
-                        </div>
-                        <div class="col-2">
-                          <h4>$23.11</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        
+        <% } %>
       </div>
     </div>
   </div>
