@@ -137,7 +137,9 @@
                     </div>
                     <div class="col">
                       <div class="row">
-                        <button class="btn btn-primary">View Product</button>
+                        <form action=<%= "/store/product/" + product.productid %>>
+                          <button class="btn btn-primary">View Product</button>
+                        </form>
                       </div>
                       <div class="row">
                         <button class="btn btn-primary">Edit Product</button>
