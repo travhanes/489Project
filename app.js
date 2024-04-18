@@ -61,10 +61,18 @@ app.use(function (err, req, res, next) {
 });
 
 async function setup() {
-  for (var i = 0; i < 6; i++) {
-    await Publisher.create({ publisherid: i, publishername: 'Publisher ' + i, publisherdesc: 'Description ' + i });
-    await Product.create({ productid: i, publisherid: i, productname: 'Product ' + i, productimage: 'example-thumbnail.jpg', productdesc: 'Description ' + i, productprice: i });
-  }
+  await Publisher.create({ publisherid: 0, publishername: 'onepagerules', publisherdesc: 'onepagerules description' });
+  await Publisher.create({ publisherid: 1, publishername: 'Mongoose', publisherdesc: 'Mongoose description' });
+  await Publisher.create({ publisherid: 2, publishername: 'EDGE Studio', publisherdesc: 'EDGE Studio description' });
+  await Publisher.create({ publisherid: 4, publishername: 'Musing Design', publisherdesc: 'Musing Design description' });
+  await Publisher.create({ publisherid: 5, publishername: 'Modiphius', publisherdesc: 'Modiphius description' });
+
+  await Product.create({ productid: 0, publisherid: 0, productname: 'Grimdark Future World Book', productimage: 'GrimdarkFutureWorldBook.jpg', productdesc: 'Grimdark Future is a story set in a war-torn sci-fi future, where humanity struggles to survive in a new galaxy. This is a universe filled with epic conflicts, mighty heroes, and daring adventurers, where species and factions face off in a battle for supremacy.', productprice: 14.99 });
+  await Product.create({ productid: 1, publisherid: 1, productname: 'This is Free Trader Beowulf', productimage: 'ThisIsFreeTraderBeowulf.jpg', productdesc: 'A complete history of Traveller from its inspirations in the early ’70s, though its initial publication, and across seven distinct editions of its original 2d6 gaming system.', productprice: 30.00 });
+  await Product.create({ productid: 2, publisherid: 2, productname: 'Genesys - War for the Throne', productimage: 'Genesys.jpg', productdesc: 'A­fter their defeat thousands of years in the past, everybody thought that they were gone forever. But now, the Mahact Gene-Sorcerers are back! And the return of those baleful tyrants has plunged the galaxy into chaos and panic.', productprice: 26.99 });
+  await Product.create({ productid: 3, publisherid: 1, productname: 'The Fifth Frontier War', productimage: 'TheFifthFrontierWar.jpg', productdesc: 'The Third Imperium has fought four Frontier Wars against the Zhodani Consulate and its allies. Worlds have changed hands, borders have been readjusted, but never has the Imperium been seriously threatened… until now. As Zhodani battle fleets emerge from jumpspace at Regina, Efate, and Jewell, something is different this time.', productprice: 29.99 });
+  await Product.create({ productid: 4, publisherid: 3, productname: 'Essential NPCs', productimage: 'EssentialNPCs.png', productdesc: '', productprice: 19.99 });
+  await Product.create({ productid: 5, publisherid: 4, productname: 'Achtung! Cthulhu 2d20 Starter Set (PDF)', productimage: 'AchtungCthulhu.png', productdesc: 'Welcome to the Secret War! In this Achtung! Cthulhu 2d20 starter set, you’ll get your first glimpse into the hidden globe-spanning conflict between the forces of good and evil! Only you and your scrappy band of heroes can defeat the malignant forces of the occult, and the malevolent might of their Mythos masters!', productprice: 20.00 });
 
   const uid1 = uuidv4()
   const uid2 = uuidv4()
