@@ -5,13 +5,39 @@ const Publisher = require('../models/Publisher');
 const Product = require('../models/Product')
 const ShoppingCart = require('../models/ShoppingCart')
 const Order = require('../models/Order')
-const OrderItem = require('../models/OrderItem')
+const OrderItem = require('../models/OrderItem');
+const Library = require('../models/Library');
+const Publisher = require('../models/Publisher');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.redirect('account/account.ejs');
 });
+
+router.get('/account', function(req, res, next) {
+  res.render('account/account.ejs', {page: 'account'});
+});
+
+router.get('/library', async function(req, res, next) {
+  console.log("LIBRARY PAGE REQUESTED");
+  
+  user = await User.findUser("testuser", "123")
+  
+  libraries = await Library.findLibraries(user.userid)
+
+  products = []
+  for (library of libraries) {
+    lib = library.dataValues
+    product = (await Product.findProduct(library.dataValues.productid)).dataValues
+    publisher = (await Publisher.findByPk(product.publisherid)).dataValues
+    products.push([product, publisher, lib]);
+  }
+
+  console.log(products);
+
+  res.render('account/library.ejs', { user, page: 'library', products });
+})
 
 router.get('/orders', async function(req, res, next) {
   user = await User.findUser("testuser", "123")
