@@ -16,7 +16,8 @@ const { v4: uuidv4 } = require('uuid');
 
 var indexRouter = require("./routes/index");
 var storeRouter = require("./routes/store");
-var accountRouter = require("./routes/account")
+var accountRouter = require("./routes/account");
+const Library = require("./models/Library");
 
 var app = express();
 
@@ -81,7 +82,13 @@ async function setup() {
   await User.create({userid: uid2, username: "testadmin", password: "123", isAdmin: true})
 
   const date = new Date('2024-04-16');
+  const date2 = new Date('2024-05-12');
 
+  await Library.create({userid: uid1, productid: 1, purchaseDate: date, downloadDate: date2})
+  await Library.create({userid: uid1, productid: 2, purchaseDate: date, downloadDate: date2})
+  await Library.create({userid: uid2, productid: 3, purchaseDate: date, downloadDate: date2})
+  await Library.create({userid: uid2, productid: 4, purchaseDate: date, downloadDate: date2})
+  
   await ShoppingCart.create({userid: uid1, productid: 1, quantity: 90, dateAdded: date})
   await ShoppingCart.create({userid: uid1, productid: 4, quantity: 10, dateAdded: date})
   await Order.create({orderid: 1, userid: uid1, status: "On the way", dateOrdered: date, paymentOption: 1111})

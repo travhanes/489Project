@@ -3,9 +3,9 @@ const { Model, DataTypes } = require('sequelize')
 
 class Library extends Model {
 
-    static async findLibrary(userid) {
+    static async findLibraries(userid) {
         try {
-            const library = await Library.findByPk(userid)
+            const library = await Library.findAll({where: {userid: userid}})
             return library ? library : null;
         } catch (error) {
             console.log(error)
@@ -23,7 +23,11 @@ Library.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  dateAdded: {
+  purchaseDate: {
+    type: DataTypes.DATE,
+    allowNull: false
+  },
+  downloadDate: {
     type: DataTypes.DATE,
     allowNull: true
   }

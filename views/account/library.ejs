@@ -84,23 +84,25 @@
 
 
         <!-- Items in Library -->
-        <!-- Item 1 -->
+        <% for (product of products) { %>
         <div class="row">
           <div class="card m-2">
             <div class="card-body">
               <div class="row">
                 <div class="col-2">
-                  <div style="height: 190px; width: 140px; background-color: red;"></div>
+                  <div style="height: 190px; width: 140px; background-color: red;">
+                    <img style="height: 100%; width: 100%;" src=<%= "../../images/products/" + product[0].productimage %>>
+                  </div>
                 </div>
                 <div class="col-sm-10 my-auto">
                   <div class="row">
                     <div class="col-4">
-                      <h4>Product Name</h4>
-                      <h6>Publisher Name</h6>
+                      <h4><%= product[0].productname %></h4>
+                      <h6><%= product[1].publishername %></h6>
                     </div>
                     <div class="col-6">
-                      <p>Purchase Date: 1/1/01</p>
-                      <p>Download Date: 1/1/01</p>
+                      <p><%= "Purchase Date: " + product[2].purchaseDate.toDateString() %></p>
+                      <p><%= "Download Date: " + product[2].downloadDate.toDateString() %></p>
                     </div>
                     <div class="col-2">
                       <button class="btn btn-primary">Show/Hide</button>
@@ -148,137 +150,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Item 2 -->
-        <div class="row">
-          <div class="card m-2">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2">
-                  <div style="height: 190px; width: 140px; background-color: red;"></div>
-                </div>
-                <div class="col-sm-10 my-auto">
-                  <div class="row">
-                    <div class="col-4">
-                      <h4>Product Name</h4>
-                      <h6>Publisher Name</h6>
-                    </div>
-                    <div class="col-6">
-                      <p>Purchase Date: 1/1/01</p>
-                      <p>Download Date: 1/1/01</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-primary">Show/Hide</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="row">
-          <div class="card m-2">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2">
-                  <div style="height: 190px; width: 140px; background-color: red;"></div>
-                </div>
-                <div class="col-sm-10 my-auto">
-                  <div class="row">
-                    <div class="col-4">
-                      <h4>Product Name</h4>
-                      <h6>Publisher Name</h6>
-                    </div>
-                    <div class="col-6">
-                      <p>Purchase Date: 1/1/01</p>
-                      <p>Download Date: 1/1/01</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-primary">Show/Hide</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="card m2">
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="">Download 1</a>
-                    </div>
-                    <div class="col-2">
-                      <p>5000000 MB</p>
-                    </div>
-                    <div class="col-2">
-                      <button class="btn btn-secondary">Download</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <% } %>
         
       </div>
     </div>
