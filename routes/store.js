@@ -46,7 +46,7 @@ router.get('/orderComplete', async function(req, res, next) {
     })
   }
 
-  res.redirect('/account/orders')
+  res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
   // res.render('store/orderComplete.ejs', {})
 })
 
@@ -87,7 +87,6 @@ router.get('/cart/delete/:productid', async function(req, res, next) {
   }
 
   res.redirect('/store/cart')
-  //res.render('store/cart.ejs', { products })
 })
 
 router.post('/cart/add/:productid', async function(req, res, next) {
@@ -109,7 +108,6 @@ router.post('/cart/add/:productid', async function(req, res, next) {
     }
     
     res.redirect('/store/cart')
-    //res.render('store/cart.ejs', { products })
   } catch (error) {
     console.log("ADD TO SHOPPING CART ERROR: ", error);
     res.redirect('/store/product/' + req.params.productid)
