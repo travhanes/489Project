@@ -103,7 +103,7 @@ router.get('/wishlist/delete/:productid', async function(req, res, next) {
 })
 
 router.post('/wishlist/add/:productid', async function(req, res, next) {
-  console.log("HELLO");
+  console.log("WISHLIST PRODUCT ADD REQUEST");
 
   user = await User.findUser("testuser", "123")
   

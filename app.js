@@ -65,6 +65,7 @@ async function setup() {
   await Publisher.create({ publisherid: 0, publishername: 'onepagerules', publisherdesc: 'onepagerules description' });
   await Publisher.create({ publisherid: 1, publishername: 'Mongoose', publisherdesc: 'Mongoose description' });
   await Publisher.create({ publisherid: 2, publishername: 'EDGE Studio', publisherdesc: 'EDGE Studio description' });
+  await Publisher.create({ publisherid: 3, publishername: 'Dragonworks', publisherdesc: 'Dragonworks description' });
   await Publisher.create({ publisherid: 4, publishername: 'Musing Design', publisherdesc: 'Musing Design description' });
   await Publisher.create({ publisherid: 5, publishername: 'Modiphius', publisherdesc: 'Modiphius description' });
 

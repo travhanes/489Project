@@ -5,6 +5,7 @@ const Product = require('../models/Product');
 const ShoppingCart = require('../models/ShoppingCart');
 const Order = require('../models/Order')
 const OrderItem = require('../models/OrderItem')
+const Library = require('../models/Library')
 var router = express.Router();
 
 function getRandomArbitrary(min, max) {
@@ -44,9 +45,23 @@ router.get('/orderComplete', async function(req, res, next) {
       productid: product.productid,
       quantity: 1 // have to get this info from the cart...
     })
+
+    try {
+      await Library.create({
+        userid: user.userid,
+        productid: product.productid,
+        purchaseDate: new Date('2024-05-13'),
+        downloadDate: new Date('2024-05-13')
+      })
+    }
+    catch (error) {
+      console.log('ERROR: Product already in library!');
+      console.log(error)
+    }
   }
 
-  res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
+  res.redirect('/account/library')
+  // res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
   // res.render('store/orderComplete.ejs', {})
 })
 
