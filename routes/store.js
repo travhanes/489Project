@@ -37,6 +37,7 @@ router.get('/orderComplete', async function(req, res, next) {
   products = []
   for (cart of carts) {
     products.push(await Product.findProduct(cart.dataValues.productid));
+    cart.destroy();
   }
 
   for (product of products) {

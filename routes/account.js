@@ -7,7 +7,6 @@ const ShoppingCart = require('../models/ShoppingCart')
 const Order = require('../models/Order')
 const OrderItem = require('../models/OrderItem');
 const Library = require('../models/Library');
-const Publisher = require('../models/Publisher');
 var router = express.Router();
 
 /* GET home page. */
