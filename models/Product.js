@@ -12,6 +12,27 @@ class Product extends Model {
             return null
         }
     }
+
+    static async findByPublisher (publisherid) {
+      try {
+        const unfilteredProducts = await Product.findAll();
+
+        var products = [];
+
+        if (unfilteredProducts != null) {
+          for (var i = 0; i < unfilteredProducts.length; i++) {
+            if (unfilteredProducts[i].publisherid == publisherid) {
+              products.push(unfilteredProducts[i]);
+            }
+          }
+        }
+
+        return products ? products : null;
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+    }
 }
 
 Product.init({

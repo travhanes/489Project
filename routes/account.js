@@ -1,6 +1,7 @@
 var express = require('express');
 const User = require('../models/User');
 const Wishlist = require('../models/Wishlist');
+const Publisher = require('../models/Publisher');
 const Product = require('../models/Product')
 const ShoppingCart = require('../models/ShoppingCart')
 const Order = require('../models/Order')
@@ -127,6 +128,16 @@ router.post('/wishlist/add/:productid', async function(req, res, next) {
     console.log(error);
     res.redirect('/store/product/' + req.params.productid)
   }
+});
+
+router.get('/publisher/:publisherid', async function(req, res, next) {
+  const publisher = await Publisher.findPublisher(req.params.publisherid);
+  const products = await Product.findByPublisher(publisher.publisherid);
+  res.render('account/publisher', { page: 'publisher', publisher, products });
+});
+
+router.get('/publisher.ejs', function(req, res, next) {
+  res.redirect('publisher/0');
 });
 
 router.get('/:page', function(req, res, next) {
