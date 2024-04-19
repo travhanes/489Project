@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-/*app.set("trust proxy", 1); // trust first proxy
+app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: "wsu489",
@@ -39,7 +39,7 @@ app.use(
     saveUninitialized: true,
     cookie: { secure: false },
   })
-);*/
+);
 
 app.use("/", indexRouter);
 app.use("/store", storeRouter);
