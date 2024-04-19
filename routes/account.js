@@ -135,7 +135,7 @@ router.get('/publisher/:publisherid', async function(req, res, next) {
   res.render('account/publisher', { page: 'publisher', publisher, products });
 });
 
-router.get('/publisher.ejs', function(req, res, next) {
+router.get('/publisher', function(req, res, next) {
   res.redirect('publisher/0');
 });
 
