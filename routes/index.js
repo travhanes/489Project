@@ -24,7 +24,8 @@ router.post('/login', async function(req, res, next) {
     req.session.user = user
     res.redirect(backlink)
   }else{
-    res.render("account/failmsg", { backlink })
+    res.locals.msg = "Login failed"
+    res.render('account/login')
   }
 });
 

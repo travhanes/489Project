@@ -27,22 +27,12 @@
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
-    <% if(locals.msg && msg==="fail") { %>
+    <% if(locals.msg) { %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <p class="mb-0">username and/or password did not match. Try again.</p>
+      <p class="mb-0"><%= locals.msg %></p>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times</button>
     </div>
-    <% } else if(locals.msg && msg==="raf") { %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <p class="mb-0">Authorized access only! please login</p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times</button>
-      </div>
-      <% } else if(locals.msg && msg==="logout") { %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <p class="mb-0">Succesfully logged out!</p>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times</button>
-        </div>
-      <% } %>
+    <% } %>
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
