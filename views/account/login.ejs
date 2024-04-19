@@ -52,9 +52,9 @@
           <input type="submit" class="btn btn-primary" value="Log In" style="display: block;">
         </form>
         <% if(locals.msg) { %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
           <p class="mb-0"><%= locals.msg %></p>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times</button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <% } %>
       </div>
