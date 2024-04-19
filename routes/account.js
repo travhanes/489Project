@@ -46,7 +46,7 @@ router.get('/library', async function(req, res, next) {
 })
 
 router.get('/orders', async function(req, res, next) {
-  user = await User.findUser("testuser", "123")
+  user = req.session.user
   orders = await Order.findOrders(user.userid)
   parsed_orders = []
   for (order of orders) {
@@ -94,7 +94,7 @@ router.get('/wishlist', async function(req, res, next) {
 router.get('/wishlist/delete/:productid', async function(req, res, next) {
   console.log('WISHLIST DELETE REQUESTED');
 
-  user = await User.findUser("testuser", "123")
+  user = req.session.user
   wish = await Wishlist.findWishlistProduct(user.userid, req.params.productid)
   wish.destroy()
 
@@ -111,7 +111,7 @@ router.get('/wishlist/delete/:productid', async function(req, res, next) {
 router.post('/wishlist/add/:productid', async function(req, res, next) {
   console.log("WISHLIST PRODUCT ADD REQUEST");
 
-  user = await User.findUser("testuser", "123")
+  user = req.session.user
   
   try {
     await Wishlist.create({
