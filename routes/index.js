@@ -17,13 +17,14 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/login', async function(req, res, next) {
-  //console.log(req.body.username+" - "+req.body.password);
+  var backlink = "/account" + req.session.next
+
   const user = await User.findUser(req.body.username, req.body.password)
   if(user !== null){
     req.session.user = user
-    res.redirect("/account" + req.session.next)
+    res.redirect(backlink)
   }else{
-    //res.redirect("/?msg=fail")
+    res.render("account/failmsg", { backlink })
   }
 });
 
