@@ -6,12 +6,6 @@ const Wishlist = require('../models/Wishlist')
 
 var router = express.Router();
 
-router.use((req, res, next) => {
-  user = req.session.user
-  res.locals.user = user
-  next()
-})
-
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   if(req.query.msg){

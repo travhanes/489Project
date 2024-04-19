@@ -12,12 +12,6 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-router.use((req, res, next) => {
-  user = req.session.user
-  res.locals.user = user
-  next()
-})
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.redirect('/');

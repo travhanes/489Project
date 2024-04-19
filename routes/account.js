@@ -17,7 +17,6 @@ router.use((req, res, next) => {
     res.render('account/login');
   }
   else {
-    res.locals.user = user
     next()
   }
 })
