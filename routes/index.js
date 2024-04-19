@@ -32,13 +32,7 @@ router.post('/login', async function(req, res, next) {
 router.get('/logout', function(req,res, next){
   if(req.session.user){
     req.session.destroy()
-    //req.session.next = "/account/account"
-    //res.locals.msg = "Logged out"
-    //res.redirect('account/account')
-    res.render('account/login')
-  }/*else {
-    res.redirect("/")
-  }*/
+  }
 
   res.redirect("/")
 })
