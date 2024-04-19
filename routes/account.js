@@ -9,35 +9,15 @@ const OrderItem = require('../models/OrderItem');
 const Library = require('../models/Library');
 var router = express.Router();
 
-/* GET home page. */
-/*router.get('/', function(req, res, next) {
-  res.redirect('account/account.ejs');
-});*/
-
-router.get('/', function(req, res, next) {
-  if(req.query.msg){
-    res.locals.msg = req.query.msg
+router.use((req, res, next) => {
+  user = req.session.user
+  
+  if (user === undefined) {
+    req.session.next = req.path
+    res.render('account/login');
   }
-  res.render('account/login');
-});
-
-router.post('/login', async function(req, res, next) {
-  //console.log(req.body.username+" - "+req.body.password);
-  const user = await User.findUser(req.body.username, req.body.password)
-  if(user!== null){
-    req.session.user = user
-    res.redirect("/account/account")
-  }else{
-    res.redirect("/?msg=fail")
-  }
-});
-
-router.get('/logout', function(req,res, next){
-  if(req.session.user){
-    req.session.destroy()
-    res.redirect("/?msg=logout")
-  }else {
-    res.redirect("/")
+  else {
+    next()
   }
 })
 
@@ -48,13 +28,7 @@ router.get('/account', function(req, res, next) {
 router.get('/library', async function(req, res, next) {
   console.log("LIBRARY PAGE REQUESTED");
   
-  user = await User.findUser("testuser", "123")
   user = req.session.user
-  
-  if (user === undefined) {
-    res.redirect('failmsg')
-    return
-  }
   
   libraries = await Library.findLibraries(user.userid)
 
@@ -175,7 +149,5 @@ router.get('/publisher', function(req, res, next) {
 router.get('/:page', function(req, res, next) {
   res.render('account/' + req.params.page, { page: req.params.page });
 });
-
-
 
 module.exports = router;
