@@ -49,7 +49,12 @@ router.get('/library', async function(req, res, next) {
   console.log("LIBRARY PAGE REQUESTED");
   
   user = await User.findUser("testuser", "123")
-  //user = req.session.user
+  user = req.session.user
+  
+  if (user === undefined) {
+    res.redirect('failmsg')
+    return
+  }
   
   libraries = await Library.findLibraries(user.userid)
 
