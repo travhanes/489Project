@@ -3,6 +3,7 @@ const User = require('../models/User');
 const ShoppingCart = require('../models/ShoppingCart')
 const Product = require("../models/Product")
 const Wishlist = require('../models/Wishlist')
+const { v4: uuidv4 } = require('uuid');
 
 var router = express.Router();
 
@@ -36,5 +37,20 @@ router.get('/logout', function(req,res, next){
 
   res.redirect("/")
 })
+
+router.post('/signup', async function(req, res, next) {
+  if (req.body.password !== req.body.confirmpassword) {
+    res.locals.msg = "Passwords don't match"
+    res.render('store/signup')
+  }
+  else if (User.existingUsername(req.body.username) === true) {
+    res.locals.msg = "Username is taken"
+    res.render('store/signup')
+  }
+  else {
+    await User.create({userid: uuidv4(), username: req.body.username, password: req.body.password})
+    res.redirect('account/account')
+  }
+});
 
 module.exports = router;

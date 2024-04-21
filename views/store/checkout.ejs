@@ -16,10 +16,6 @@
 
   <link rel="stylesheet" href="..\..\stylesheets\index.css">
   <script src="..\..\scripts\index.js"></script>
-
-
-
-
   <title>Checkout</title>
 </head>
 
@@ -51,10 +47,82 @@
                   <input type="text" id="formControlLgXsd" class="form-control form-control-lg" value="Anna Doe" />
                   <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
                 </div>
+
                 <!-- card stuff -->
                 
                 <%- include("card") %>
                   
+                <div class="row mb-4">
+                  <div class="col-7">
+                    <div class="form-outline">
+                      <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                        value="1234 5678 1234 5678" />
+                      <label class="form-label" for="formControlLgXM">Card Number</label>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-outline">
+                      <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                        placeholder="MM/YYYY" />
+                      <label class="form-label" for="formControlLgExpk">Expire</label>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="form-outline">
+                      <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
+                        placeholder="Cvv" />
+                      <label class="form-label" for="formControlLgcvv">Cvv</label>
+                    </div>
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-4">
+                    <div class = "form-outline mb-2">
+                      <input type = "text" id = "formControlFirst" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlFirst">First Name</label>
+                    </div>
+                  </div>
+                  <div class = "col-4">
+                    <div class = "form-outline mb-2">
+                      <input type = "text" id = "formControlLast" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlLast">Last Name</label>
+                    </div>
+                  </div>
+                  <div class = "col-4">
+                    <div class = "form-outline mb-2">
+                      <input type = "number" id = "formControlPhone" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlPhone">Phone Number</label>
+                    </div>
+                  </div>
+                </div>
+                <div class = "form-outline mb-4">
+                  <input type = "text" id = "formControlAdd" class = "form-control form-control-lg"/>
+                  <label class="form-label" for="formControlAdd">Shipping / Billing Address</label>
+                  <input type = "text" id = "formControlAdd2" class = "form-control form-control-lg"/>
+                  <label class="form-label" for="formControlAdd2">Shipping / Billing Address (Line 2)</label>
+                </div>
+                <div class = "row">
+                  <div class = "col-8">
+                    <div class = "form-outline mb-2">
+                      <input type = "text" id = "formControlCity" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlCity">City</label>
+                    </div>
+                  </div>
+                  <div class = "col-2">
+                    <div class = "form-outline mb-2">
+                      <input type = "text" id = "formControlState" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlState">State</label>
+                    </div>
+                  </div>
+                  <div class = "col-2">
+                    <div class = "form-outline mb-4">
+                      <input type = "number" id = "formControlZip" class = "form-control form-control-lg"/>
+                      <label class="form-label" for="formControlZip">Zipcode</label>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-success btn-lg btn-block">Add card</button>
+
               </form>
             </div>
           </div>
@@ -65,7 +133,9 @@
         <div class="row">
           <div class="card m-2">
             <div class="card-body">
+              <% total = 0 %>
               <% for (product of products) { %>
+                <% total += product.productprice %>
                 <div class="card m-2">
                   <div class="card-body">
                     <div class="row">
@@ -109,10 +179,13 @@
               <input type="hidden" id="token" name="tokenVal">
               <button class="btn btn-primary" id = "placeOrder" name = "placeOrder" disabled>Place Order</button>
             </form>
-            <p style="font-size: large;">Order: </p>
-            <p style="font-size: large;">Shipping: </p>
-            <p style="font-size: large;">Tax: </p>
-            <p class="border-top py-3" style="font-size: large; font-weight: bolder;">Total: </p>
+            <% subtotal = parseFloat(total.toFixed(2)) %>
+            <% tax = ((total + 10)*.10).toFixed(2) %>
+            <% total = parseFloat(subtotal) + parseFloat(tax) + 10 %>
+            <p style="font-size: large;">Subtotal: $<%= subtotal %></p>
+            <p style="font-size: large;">Shipping: $10</p>
+            <p style="font-size: large;">Tax: <%= tax %></p>
+            <p class="border-top py-3" style="font-size: large; font-weight: bolder;">Total: <%= total.toFixed(2) %></p>
           </div>
         </div>
       </div>

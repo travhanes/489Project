@@ -31,13 +31,6 @@
         margin-top: 10px;
         padding: 5px;
       }
-
-      .test-button {
-        width: fit-content;
-        margin: auto;
-        margin-top: 10px;
-        padding: 5px;
-      }
     </style>
 </head>
   <body>
@@ -51,21 +44,18 @@
         </div>
         <!-- Tabs Titles -->
         <div class="container-fluid align-content-center">
-          <h2 style="text-align: center;">Log In</h2>
+          <h2 style="text-align: center;">Sign Up</h2>
         </div>
 
         <!-- Login Form -->
-        <form method="post" action="/login">
+        <form method="post" action="/signup">
           <input type="text" id="login" name="username" placeholder="username">
           <input type="password" id="password" name="password" placeholder="password">
-          <input type="submit" class="btn btn-primary" value="Log In" style="display: block;">
+          <input type="password" id="confirmpassword" name="confirmpassword" placeholder="confirm password">
+          <input type="submit" class="btn btn-primary" value="Sign Up" style="display: block;">
         </form>
 
-        <input class="btn btn-primary test-button" value="Test Values" style="display: block;"
-        onclick="document.getElementById('login').value = 'testuser';
-        document.getElementById('password').value = '123'">
-
-      <p style="text-align: center;">Don't have an account? <a href="/store/signup">Sign up</a></p>
+        <p style="text-align: center;">Already have an account? <a href="/account/account">Log in</a></p>
 
         <% if(locals.msg) { %>
         <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
