@@ -79,7 +79,7 @@ router.get('/orders', async function(req, res, next) {
 })
 
 router.get('/wishlist', async function(req, res, next) {
-  user = await User.findUser("testuser", "123")
+  user = req.session.user;
   
   wishlists = await Wishlist.findWishlist(user.userid)
 
