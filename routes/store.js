@@ -20,7 +20,6 @@ router.get('/', function(req, res, next) {
 router.get('/orderComplete', async function(req, res, next) {
   console.log("ORDER COMPLETE PAGE OPENED");
 
-  //user = await User.findUser("testuser", "123")
   user = req.session.user
   
   if (user === undefined) {
@@ -84,7 +83,6 @@ router.get('/product/:productid', async function(req, res, next) {
 });
 
 router.get('/cart', async function(req, res, next) {
-  //user = await User.findUser("testuser", "123")
   user = req.session.user
   
   if (user === undefined) {
@@ -104,7 +102,6 @@ router.get('/cart', async function(req, res, next) {
 })
 
 router.get('/cart/delete/:productid', async function(req, res, next) {
-  //user = await User.findUser("testuser", "123")
   user = req.session.user
   
   if (user === undefined) {
@@ -128,7 +125,6 @@ router.get('/cart/delete/:productid', async function(req, res, next) {
 
 router.post('/cart/add/:productid', async function(req, res, next) {
   try {
-    //user = await User.findUser("testuser", "123")
     user = req.session.user
   
     if (user === undefined) {
@@ -161,7 +157,6 @@ router.post('/cart/add/:productid', async function(req, res, next) {
 router.get('/checkout', async function(req, res, next) {
   console.log("CHECKOUT PAGE OPENED");
 
-  //user = await User.findUser("testuser", "123")
   user = req.session.user
   
   if (user === undefined) {
