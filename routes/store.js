@@ -104,7 +104,32 @@ router.post('/orderComplete/', async function(req, res, next) {
   console.log(req.body.tokenVal)
   user = await User.findUser("testuser", "123")
 
-  orderid = Math.floor(getRandomArbitrary(10000, 99999)) // could break if the same number is chosen twice...
+  products = []
+  carts = await ShoppingCart.findCart(user.userid)
+  for (cart of carts) {
+    products.push(await Product.findProduct(cart.dataValues.productid));
+  }
+  total = 0
+  for (product of products) {
+    price = product.productprice.toFixed(2) * 100
+    total += price
+  }
+  total = Math.floor(total).toString()
+  
+  try{
+    const payment = {
+      sourceId: req.body.tokenVal,
+      amountMoney: {
+        amount: total,
+        currency: 'USD'
+      },
+      locationID: locationId,
+      idempotencyKey: crypto.randomUUID()
+    }
+    // IF THIS ERRORS THE PAYMENT FAILS!!! do not do the order if it does fail
+    const res = await client.paymentsApi.createPayment(payment);
+
+    orderid = Math.floor(getRandomArbitrary(10000, 99999)) // could break if the same number is chosen twice...
 
   await Order.create({
     orderid: orderid,
@@ -115,18 +140,14 @@ router.post('/orderComplete/', async function(req, res, next) {
     paymentOption: 1111
   })
 
-  carts = await ShoppingCart.findCart(user.userid)
-  products = []
-  
+
   for (cart of carts) {
-    products.push(await Product.findProduct(cart.dataValues.productid));
+    
     cart.destroy();
   }
 
-  total = 0
+ 
   for (product of products) {
-    price = product.productprice.toFixed(2) * 100
-    total += price
     await OrderItem.create({
       orderid: orderid,
       productid: product.productid,
@@ -149,26 +170,20 @@ router.post('/orderComplete/', async function(req, res, next) {
     }
   }
 
-  total = Math.floor(total).toString()
 
-  try{
-    const payment = {
-      sourceId: req.body.tokenVal,
-      amountMoney: {
-        amount: total,
-        currency: 'USD'
-      },
-      locationID: locationId,
-      idempotencyKey: crypto.randomUUID()
-    }
-    const res = await client.paymentsApi.createPayment(payment);
 
   }
   catch(err)
   {
-    console.log(err)
+    console.log(err) // maybe do a redirect here with an error
   }
 
+
+
+
+  total = Math.floor(total).toString()
+
+  
   res.redirect('/account/library')
   // res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
   // res.render('store/orderComplete.ejs', {})

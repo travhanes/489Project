@@ -16,25 +16,6 @@
             await card.attach('#card-container');
         }
 
-        async function getToken()
-        {
-            try{
-                console.log("Test")
-                // Attempt to tokenize the card information
-                const tokenResult = await card.tokenize();
-                if(tokenResult.status == 'OK'){
-                    return tokenResult
-                    // Log the token if tokenization is successful
-                    console.log(tokenResult.token);
-                }else{
-                    // Log an error message if tokenization fails
-                    console.error('failed to tokenize');
-                }
-            }catch(error){
-                // Catch and log any errors during the process
-                console.error('error',error);
-            }
-        }
         // Calling the initializeCard function and logging the card object
         intializeCard(payments).then(card=>{
             console.log(card);
