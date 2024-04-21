@@ -123,14 +123,17 @@ router.post('/orderComplete/', async function(req, res, next) {
     cart.destroy();
   }
 
- 
+  total = 0
   for (product of products) {
-    //total = total + product.productprice
+    price = product.productprice.toFixed(2) * 100
+    total += price
     await OrderItem.create({
       orderid: orderid,
       productid: product.productid,
       quantity: 1 // have to get this info from the cart...
     })
+
+    
 
     try {
       await Library.create({
@@ -146,8 +149,7 @@ router.post('/orderComplete/', async function(req, res, next) {
     }
   }
 
-
-  total = '455' // need to capture the total number of cents for the items in this field
+  total = Math.floor(total).toString()
 
   try{
     const payment = {
