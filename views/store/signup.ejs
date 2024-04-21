@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <title>Login</title>
+
+    <style>
+      .wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column; 
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
+        padding: 20px;
+        padding-top: 25vh;
+      }
+
+      form input {
+        display: block;
+        width: fit-content;
+        margin: auto;
+        margin-top: 10px;
+        padding: 5px;
+      }
+    </style>
+</head>
+  <body>
+    <div class="wrapper">
+      <div id="formContent">
+        <!-- Icon -->
+        <div>
+          <a href="/">
+            <img src="/images/logo.png" id="icon" alt="User Icon" />
+          </a>
+        </div>
+        <!-- Tabs Titles -->
+        <div class="container-fluid align-content-center">
+          <h2 style="text-align: center;">Sign Up</h2>
+        </div>
+
+        <!-- Login Form -->
+        <form method="post" action="/signup">
+          <input type="text" id="login" name="username" placeholder="username">
+          <input type="password" id="password" name="password" placeholder="password">
+          <input type="password" id="confirmpassword" name="confirmpassword" placeholder="confirm password">
+          <input type="submit" class="btn btn-primary" value="Log In" style="display: block;">
+        </form>
+
+        <% if(locals.msg) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+          <p class="mb-0"><%= locals.msg %></p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

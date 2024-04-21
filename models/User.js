@@ -19,6 +19,16 @@ class User extends Model {
         }
     }
 
+    static async existingUsername(username) {
+      const user = await User.findByPk(username)
+      if (user !== null) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+
     static async findAdmin(username, password)
     {
       try {
