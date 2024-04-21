@@ -21,7 +21,7 @@
         width: 100%;
         min-height: 100%;
         padding: 20px;
-        padding-top: 30vh;
+        padding-top: 25vh;
       }
 
       form input {
@@ -64,6 +64,8 @@
         <input class="btn btn-primary test-button" value="Test Values" style="display: block;"
         onclick="document.getElementById('login').value = 'testuser';
         document.getElementById('password').value = '123'">
+
+      <p style="text-align: center;">Don't have an account? <a href="/store/signup">Sign up</a></p>
 
         <% if(locals.msg) { %>
         <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
