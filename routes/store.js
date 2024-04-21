@@ -98,7 +98,7 @@ router.get('/', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/orderComplete', async function(req, res, next) {
+router.post('/orderComplete', async function(req, res, next) {
   console.log("ORDER COMPLETE PAGE OPENED");
 
   user = req.session.user
