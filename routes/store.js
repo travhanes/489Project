@@ -6,7 +6,88 @@ const ShoppingCart = require('../models/ShoppingCart');
 const Order = require('../models/Order')
 const OrderItem = require('../models/OrderItem')
 const Library = require('../models/Library')
+const { Client, Environment, ApiError } = require('square')
+const { SQUARE_ACCESS_TOKEN } = require('./config');
+const crypto = require('crypto');
+
+
 var router = express.Router();
+
+const appId = 'sandbox-sq0idb-cOGNPoTLxMDLr1Hf9Ep_Jg';
+const locationId = 'L25A8Q74V8J17';
+
+const client = new Client({
+  accessToken: SQUARE_ACCESS_TOKEN,
+  environment: Environment.Sandbox
+});
+
+async function createPayment(req, res){
+  const payload = await json(res);
+  console.log(JSON.stringify(payload));
+
+  /* payload verification would go here */
+  await retry(async(bail, attempt) => {
+    console.log("Creating payment ",attempt);
+    try
+    {
+      const payment = {
+        idempotencyKey: payload.idempotencyKey,
+          locationId: payload.locationId,
+          sourceId: payload.sourceId,
+          // While it's tempting to pass this data from the client
+          // Doing so allows bad actor to modify these values
+          // Instead, leverage Orders to create an order on the server
+          // and pass the Order ID to createPayment rather than raw amounts
+          // See Orders documentation: https://developer.squareup.com/docs/orders-api/what-it-does
+          amountMoney: {
+          // the expected amount is in cents, meaning this is $1.00.
+          amount: '100',
+          // If you are a non-US account, you must change the currency to match the country in which
+          // you are accepting the payment.
+          currency: 'USD',
+          },
+      };
+      if(payload.customerId)
+      {
+        payment.customerId = payload.customerId;
+      }
+      if (payload.verificationToken) {
+        payment.verificationToken = payload.verificationToken;
+      }
+
+      const { result, statusCode } =
+        await square.paymentsApi.createPayment(payment);
+      
+      console.log("Payment succeeded: ", {result, statusCode})
+
+      send(res, statusCode, {
+        success: true,
+        payment: {
+          id: result.payment.id,
+          status: result.payment.status,
+          receiptUrl: result.payment.receiptUrl,
+          orderId: result.payment.orderId,
+        },
+      });
+
+    }
+    catch(err)
+    {
+      if(err instanceof ApiError){
+        bail(err)
+        console.log(err.errors)
+      }
+      else
+      {
+        console.log("Error on payment attempt ", attempt, err)
+        throw err
+      }
+    }
+
+    
+    
+  })
+}
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -22,54 +103,90 @@ router.get('/orderComplete', async function(req, res, next) {
 
   user = req.session.user
   
+  console.log(req.body.tokenVal)
   if (user === undefined) {
     req.session.next = req.path
     res.render('account/login');
   }
-  else {
-    orderid = Math.floor(getRandomArbitrary(10000, 99999)) // could break if the same number is chosen twice...
-
-    await Order.create({
-      orderid: orderid,
-      userid: user.userid,
-      status: 'Ordered',
-      dateOrdered: Date('2024-05-20'),
-      dateDelivered: Date('2024-05-20'),
-      paymentOption: 1111
-    })
-
-    carts = await ShoppingCart.findCart(user.userid)
+  else
+  {
     products = []
+    carts = await ShoppingCart.findCart(user.userid)
     for (cart of carts) {
       products.push(await Product.findProduct(cart.dataValues.productid));
-      cart.destroy();
     }
-
+    total = 0
     for (product of products) {
-      await OrderItem.create({
+      price = product.productprice.toFixed(2) * 100
+      total += price
+    }
+    total = Math.floor(total).toString()
+  
+    try{
+      const payment = {
+        sourceId: req.body.tokenVal,
+        amountMoney: {
+          amount: total,
+          currency: 'USD'
+        },
+        locationID: locationId,
+        idempotencyKey: crypto.randomUUID()
+      }
+      // IF THIS ERRORS THE PAYMENT FAILS!!! do not do the order if it does fail
+      const res = await client.paymentsApi.createPayment(payment);
+
+      orderid = Math.floor(getRandomArbitrary(10000, 99999)) // could break if the same number is chosen twice...
+
+      await Order.create({
         orderid: orderid,
-        productid: product.productid,
-        quantity: 1 // have to get this info from the cart...
+        userid: user.userid,
+        status: 'Ordered',
+        dateOrdered: Date('2024-05-20'),
+        dateDelivered: Date('2024-05-20'),
+        paymentOption: 1111
       })
 
-      try {
-        await Library.create({
-          userid: user.userid,
-          productid: product.productid,
-          purchaseDate: new Date('2024-05-13'),
-          downloadDate: new Date('2024-05-13')
-        })
+
+      for (cart of carts) {
+        
+        cart.destroy();
       }
-      catch (error) {
-        console.log('ERROR: Product already in library!');
-        console.log(error)
+
+  
+      for (product of products) {
+        await OrderItem.create({
+          orderid: orderid,
+          productid: product.productid,
+          quantity: 1 // have to get this info from the cart...
+        })
+
+        
+
+        try {
+          await Library.create({
+            userid: user.userid,
+            productid: product.productid,
+            purchaseDate: new Date('2024-05-13'),
+            downloadDate: new Date('2024-05-13')
+          })
+        }
+        catch (error) {
+          console.log('ERROR: Product already in library!');
+          console.log(error)
+        }
       }
     }
-
-    res.redirect('/account/library')
-    // res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
-    // res.render('store/orderComplete.ejs', {})
+    catch(err)
+    {
+      console.log(err) // maybe do a redirect here with an error
+    }
   }
+
+
+  
+  res.redirect('/account/library')
+  // res.redirect('/account/orders') // for testing purposes. Use below for actual implementation
+  // res.render('store/orderComplete.ejs', {})
 })
 
 router.get('/product.ejs', function(req, res, next) {
