@@ -97,8 +97,12 @@
                 <div class="col-sm-10 my-auto">
                   <div class="row">
                     <div class="col-4">
-                      <h4><%= product[0].productname %></h4>
-                      <h6><%= product[1].publishername %></h6>
+                      <a href=<%= "/store/product/" + product[0].productid %>>
+                        <h4><%= product[0].productname %></h4>
+                      </a>
+                      <a href=<%= "/account/publisher/" + product[1].publisherid %>
+                        <h6><%= product[1].publishername %></h6>
+                      </a>
                     </div>
                     <div class="col-6">
                       <p><%= "Purchase Date: " + product[2].purchaseDate.toDateString() %></p>

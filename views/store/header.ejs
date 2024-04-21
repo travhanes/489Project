@@ -11,6 +11,7 @@
       </div>
 
       <div class="col-2">
+        <% if (locals.user) { %>
         <a href="/account/account">
           <button class="login">Account</button>
         </a>
@@ -19,8 +20,17 @@
           <button class="login">Library</button>
         </a>
 
-        <a href="/account">
+        <a href="/logout">
+          <button class="login">Log Out</button>
+        </a>
+        <% } else { %>
+        <a href="/account/account">
           <button class="login">Log in</button>
         </a>
+
+        <a href="/store/signup">
+          <button class="login">Sign Up</button>
+        </a>
+        <% } %>
       </div>
     </div>
