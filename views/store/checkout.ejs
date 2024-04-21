@@ -18,12 +18,7 @@
   <script src="..\..\scripts\index.js"></script>
 
 
-  <script>
-    function getToken()
-    {
-      return 10
-    }
-  </script>
+
 
   <title>Checkout</title>
 </head>
@@ -112,7 +107,7 @@
           <div class="card-body">
             <form class="row m-2 d-flex justify-content-center" method="post" action = "/store/orderComplete/" >
               <input type="hidden" id="token" name="tokenVal">
-              <button class="btn btn-primary">Place Order</button>
+              <button class="btn btn-primary" id = "placeOrder" name = "placeOrder" disabled>Place Order</button>
             </form>
             <p style="font-size: large;">Order: </p>
             <p style="font-size: large;">Shipping: </p>

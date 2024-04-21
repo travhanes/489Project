@@ -29,11 +29,13 @@
                 const tokenResult = await card.tokenize();
                 if(tokenResult.status == 'OK'){
                     // Log the token if tokenization is successful
+                    document.getElementById('placeOrder').disabled = false;
                     document.getElementById('token').value = tokenResult.token
                     
                     console.log(tokenResult.token);
                 }else{
                     // Log an error message if tokenization fails
+                    
                     console.error('failed to tokenize');
                 }
             }catch(error){
