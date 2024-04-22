@@ -35,7 +35,7 @@
                     console.log(tokenResult.token);
                 }else{
                     // Log an error message if tokenization fails
-                    
+                    document.getElementById('placeOrder').disabled = true;
                     console.error('failed to tokenize');
                 }
             }catch(error){
@@ -49,4 +49,4 @@
 <!-- Card container where the card UI will be rendered -->
 <div id="card-container"></div>
 <!-- Button to trigger the card tokenization process -->
-<button id="card-button" type="button">Save</button>
+<button id="card-button" type="button">Add card</button>
